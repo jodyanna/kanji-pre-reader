@@ -1,9 +1,10 @@
+import { Container } from "./style";
 
 export default function Footer() {
 
   return (
-    <div>
-
-    </div>
+    <Container>
+      This is a footer.
+    </Container>
   )
 }
