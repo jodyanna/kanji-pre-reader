@@ -8,7 +8,15 @@ export default function TextareaForm() {
 
   const handleSubmit = event => {
     event.preventDefault();
-    console.log(text);
+
+    // convert text to unicode hex
+    console.log(text.charCodeAt(0).toString(16));
+
+    // convert hex to int
+    console.log("hex to num: " + parseInt("4dbf", 16));
+
+    // all common kanji hex values 4e00 - 9faf // int num (19968 - 40879)
+    // all rare kanji hex values 3400 - 4dbf // int num (13312 - 19903)
   }
 
   return (
