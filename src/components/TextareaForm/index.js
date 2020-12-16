@@ -3,14 +3,15 @@ import { Form, Textarea } from "./style";
 
 export default function TextareaForm(props) {
   const [ text, setText ] = useState("Paste text here.");
-  const [ kanji, setKanji ] = useState([]);
 
   const handleChange = event => setText(event.target.value);
 
   const handleSubmit = event => {
     event.preventDefault();
-    setKanji(parseKanjiFromText(text));
-    fetchAllKanjiData(kanji).then(res => props.setAllKanjiData(res))
+    fetchAllKanjiData(parseKanjiFromText(text)).then(res => {
+      props.setAllKanjiData(res);
+      props.setIsReady(true);
+    })
   }
 
   return (
@@ -21,7 +22,7 @@ export default function TextareaForm(props) {
                 cols={50}
                 rows={40}
       />
-      <input type="submit" value="Create study sheet" />
+      <input type="submit" value="Next" />
     </Form>
   )
 }
