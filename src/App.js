@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Header from "./components/Header";
 import TextareaForm from "./components/TextareaForm";
@@ -9,17 +9,21 @@ const Page = styled.div`
   display: flex;
   flex-direction: column;
   
+  justify-content: center;
+  align-items: center;
+  
   margin: 0;
   padding: 0;
-  
   
 `;
 
 function App() {
+  const [ allKanjiData, setAllKanjiData ] = useState({});
+
   return (
     <Page>
       <Header />
-      <TextareaForm />
+      <TextareaForm setAllKanjiData={setAllKanjiData}/>
       <Footer />
     </Page>
   );
