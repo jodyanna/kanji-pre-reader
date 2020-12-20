@@ -5,7 +5,9 @@ export const Container = styled.div`
   flex-direction: row;
   
   width: 100%;
-  height: 15%;
+  height: 17%;
+  
+  margin-bottom: 1em;
   
   border: 2px solid #000000;
 `;
@@ -19,7 +21,7 @@ export const Kanji = styled.div`
   width: 100%;
   height: 80%;
 
-  font-size: 4.5em;
+  font-size: 3.5em;
 `;
 
 export const Summary = styled.div`
@@ -52,6 +54,14 @@ export const Col = styled.div`
   
   justify-content: flex-start;
   align-items: center;
+`;
+
+export const KanjiOverview = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: flex-start;
+  align-items: center;
   
   width: 20%;
   height: 100%;
@@ -63,11 +73,11 @@ export const Info = styled.p`
   margin: 0 1em 0 0;
 `;
 
-export const Strokes = styled.div`
+export const SmCenterText = styled.div`
   display: flex;
   
   justify-content: center;
   align-items: center;
   
-  font-size: 0.8em;
+  font-size: 0.7em;
 `;

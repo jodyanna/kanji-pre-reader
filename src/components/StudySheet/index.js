@@ -6,9 +6,7 @@ export default function StudySheet(props) {
 
   return (
     <Page>
-      <StudySheetEntry kanji={props.allKanjiData[0]} />
-      <p>hi there</p>
-      {props.allKanjiData.map(entry => <p>{entry.kanji}</p>)}
+      {props.allKanjiData.map((entry, i) => <StudySheetEntry kanji={entry} key={i}/>)}
     </Page>
   )
 }

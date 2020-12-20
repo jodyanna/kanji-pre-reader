@@ -1,6 +1,5 @@
 import React from "react";
-import { Container, Col, Kanji, Strokes, Summary, Row, Info } from "./style";
-
+import { Container, KanjiOverview, Kanji, SmCenterText, Summary, Row, Col, Info } from "./style";
 
 export default function StudySheetEntry(props) {
 
@@ -13,21 +12,23 @@ export default function StudySheetEntry(props) {
 
   return (
     <Container>
-      <Col>
+      <KanjiOverview>
+        <Col>
+          <SmCenterText>Grade: {props.kanji.grade}</SmCenterText>
+          <SmCenterText>JLPT: N{props.kanji.jlpt}</SmCenterText>
+        </Col>
         <Kanji>{props.kanji.kanji}</Kanji>
-        <Strokes>Strokes: {props.kanji.stroke_count}</Strokes>
-      </Col>
+        <SmCenterText>Strokes: {props.kanji.stroke_count}</SmCenterText>
+      </KanjiOverview>
       <Summary>
         <Row>
           <Info>Kun-Reading: {renderListWithCommas(props.kanji.kun_readings)}</Info>
+        </Row>
+        <Row>
           <Info>On-Reading: {renderListWithCommas(props.kanji.on_readings)}</Info>
         </Row>
         <Row>
           <Info>Meaning(s): {renderListWithCommas(props.kanji.meanings)}</Info>
-        </Row>
-        <Row>
-          <Info>Grade: {props.kanji.grade}</Info>
-          <Info>JLPT: N{props.kanji.jlpt}</Info>
         </Row>
       </Summary>
     </Container>
