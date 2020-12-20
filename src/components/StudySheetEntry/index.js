@@ -1,62 +1,35 @@
 import React from "react";
-import styled from "styled-components";
-
-const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  
-  width: 100%;
-  height: 15%;
-  
-  border: 2px solid #000000;
-`;
-
-const Kanji = styled.div`
-  width: 20%;
-  height: 100%;
-
-  text-align: center;
-  font-size: 5em;
-  
-  border: 2px solid #000000;
-`;
-
-const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  
-  width: 80%;
-  height: 100%;
-  
-  border: 2px solid #000000;
-`;
-
-const Row = styled.div`
-  width: 100%;
-  height: 33%;
-`;
+import { Container, Col, Kanji, Strokes, Summary, Row, Info } from "./style";
 
 
 export default function StudySheetEntry(props) {
 
+  const renderListWithCommas = readings => {
+    return readings.map((kana, i) => {
+      if (i === readings.length - 1) return <span>{kana}</span>
+      else return <span>{kana}, </span>
+    })
+  }
 
   return (
     <Container>
-      <Kanji>{props.kanji.kanji}</Kanji>
-      <Info>
+      <Col>
+        <Kanji>{props.kanji.kanji}</Kanji>
+        <Strokes>Strokes: {props.kanji.stroke_count}</Strokes>
+      </Col>
+      <Summary>
         <Row>
-          kun-yomi: {props.kanji.kun_readings.map(kana => <span>{kana} </span>)}
-          on-yomi: {props.kanji.on_readings.map(kana => <span>{kana} </span>)}
+          <Info>Kun-Reading: {renderListWithCommas(props.kanji.kun_readings)}</Info>
+          <Info>On-Reading: {renderListWithCommas(props.kanji.on_readings)}</Info>
         </Row>
         <Row>
-          strokes: {props.kanji.stroke_count}
-          meaning(s): {props.kanji.meanings.map(def => <span>{def}</span>)}
+          <Info>Meaning(s): {renderListWithCommas(props.kanji.meanings)}</Info>
         </Row>
         <Row>
-          Grade: {props.kanji.grade}
-          JLPT: N{props.kanji.jlpt}
+          <Info>Grade: {props.kanji.grade}</Info>
+          <Info>JLPT: N{props.kanji.jlpt}</Info>
         </Row>
-      </Info>
+      </Summary>
     </Container>
   )
 }
