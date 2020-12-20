@@ -5,9 +5,9 @@ export const Container = styled.div`
   flex-direction: row;
   
   width: 100%;
-  height: 17%;
+  height: 10%;
   
-  margin-bottom: 1em;
+  margin-bottom: 3em;
   
   border: 2px solid #000000;
 `;
@@ -21,7 +21,7 @@ export const Kanji = styled.div`
   width: 100%;
   height: 80%;
 
-  font-size: 3.5em;
+  font-size: 10em;
 `;
 
 export const Summary = styled.div`
@@ -29,11 +29,9 @@ export const Summary = styled.div`
   flex-direction: column;
   
   width: 80%;
-  height: 100%;
+  height: 40%;
   
   padding-left: 0.5em;
-  
-  border-left: 2px solid #000000;
 `;
 
 export const Row = styled.div`
@@ -49,6 +47,16 @@ export const Row = styled.div`
 `;
 
 export const Col = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;  
+  
+  border-left: 2px solid #000000;  
+`;
+
+export const KanjiCol = styled.div`
   display: flex;
   flex-direction: column;
   
@@ -71,6 +79,8 @@ export const KanjiOverview = styled.div`
 
 export const Info = styled.p`
   margin: 0 1em 0 0;
+  
+  font-size: 2em;
 `;
 
 export const SmCenterText = styled.div`
@@ -79,5 +89,5 @@ export const SmCenterText = styled.div`
   justify-content: center;
   align-items: center;
   
-  font-size: 0.7em;
+  font-size: 2em;
 `;
