@@ -5,6 +5,7 @@ import TextareaForm from "./components/TextareaForm";
 import Footer from "./components/Footer";
 import styled from "styled-components";
 import StudySheet from "./components/StudySheet";
+import Filter from "./components/Filter";
 
 const Page = styled.div`
   display: flex;
@@ -18,20 +19,31 @@ const Page = styled.div`
   
 `;
 
-function App() {
-  const [ allKanjiData, setAllKanjiData ] = useState([]);
-  const [ isReady, setIsReady ] = useState(false);
+export default function App() {
+  const [ allKanji, setAllKanji ] = useState([]);
+  const [ filterKanji, setFilterKanji ] = useState([]);
+  // Boolean switches to step through app procedure
+  const [ isFilterReady, setIsFilterReady ] = useState(false);
+  const [ isStudySheetReady, setIsStudySheetReady ] = useState(false);
 
   return (
     <Page>
       <Header />
-      <TextareaForm setAllKanjiData={data => setAllKanjiData(data)}
-                    setIsReady={bool => setIsReady(bool)}
+      <TextareaForm setAllKanji={kanji => setAllKanji(kanji)}
+                    setIsReady={bool => setIsFilterReady(bool)}
       />
-      {isReady? <StudySheet allKanjiData={allKanjiData} /> : ""}
+      {isFilterReady ?
+        <Filter allKanji={allKanji}
+                setFilterKanji={kanji => setFilterKanji(kanji)}
+                setIsReady={bool => setIsStudySheetReady}
+        />
+        : ""
+      }
+      {isStudySheetReady ?
+        <StudySheet filterKanji={filterKanji} />
+        : ""
+      }
       <Footer />
     </Page>
   );
 }
-
-export default App;

@@ -8,10 +8,7 @@ export default function TextareaForm(props) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    fetchAllKanjiData(parseKanjiFromText(text)).then(res => {
-      props.setAllKanjiData(res);
-      props.setIsReady(true);
-    })
+    props.setAllKanjiData(parseKanjiFromText(text));
   }
 
   return (
@@ -30,16 +27,6 @@ export default function TextareaForm(props) {
 const parseKanjiFromText = text => {
   const kanjiRegX = /[\u4e00-\u9faf\u3400-\u4dbf]/g
 
+  // use set to remove duplicates
   return [...new Set(text.match(kanjiRegX))]
-}
-
-const fetchAllKanjiData = async kanji => {
-  const allKanjiData = [];
-
-  for (let i = 0; i < kanji.length; i++) {
-    const response = await fetch("https://kanjiapi.dev/v1/kanji/" + kanji[i])
-    response.json().then(json => allKanjiData.push(json))
-  }
-
-  return allKanjiData
 }

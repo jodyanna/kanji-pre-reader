@@ -17,7 +17,6 @@ const Box = styled.div`
 `;
 
 export default function PracticeArea() {
-
   return (
     <Container>
       <Box />
