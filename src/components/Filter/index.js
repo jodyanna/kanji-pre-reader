@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 const Form = styled.form`
@@ -34,13 +35,14 @@ const Cell = styled.td`
 `;
 
 export default function Filter(props) {
+  const history = useHistory();
 
   const handleSubmit = event => {
     event.preventDefault()
     const checkboxNodeList = document.querySelectorAll('input[type=checkbox]:checked');
     const selectedKanji = Array.from(checkboxNodeList, node => node.value);
     props.setFilterKanji(selectedKanji);
-    props.setIsReady(true);
+    history.push("/step3")
   }
 
   return (

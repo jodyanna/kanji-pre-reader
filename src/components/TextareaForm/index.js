@@ -1,15 +1,18 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+
 import { Form, Textarea } from "./style";
 
 export default function TextareaForm(props) {
   const [ text, setText ] = useState("Paste text here.");
+  const history = useHistory();
 
   const handleChange = event => setText(event.target.value);
 
   const handleSubmit = event => {
     event.preventDefault();
     props.setAllKanji(parseKanjiFromText(text));
-    props.setIsReady(true);
+    history.push("/step2");
   }
 
   return (

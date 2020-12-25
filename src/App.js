@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
 import Header from "./components/Header";
 import TextareaForm from "./components/TextareaForm";
@@ -16,7 +21,6 @@ const Page = styled.div`
   
   margin: 0;
   padding: 0;
-  
 `;
 
 export default function App() {
@@ -27,24 +31,28 @@ export default function App() {
   const [ isStudySheetActive, setIsStudySheetActive ] = useState(false);
 
   return (
-    <Page>
-      <Header />
-      <TextareaForm setAllKanji={kanji => setAllKanji(kanji)}
-                    setIsReady={bool => setIsFilterActive(bool)}
-      />
-      {isFilterActive ?
-        <Filter allKanji={allKanji}
-                setFilterKanji={kanji => setFilterKanji(kanji)}
-                setIsFilterReady={bool => setIsFilterActive(bool)}
-                setIsReady={bool => setIsStudySheetActive(bool)}
-        />
-        : ""
-      }
-      {isStudySheetActive ?
-        <StudySheet filterKanji={filterKanji} />
-        : ""
-      }
-      <Footer />
-    </Page>
+    <Router>
+      <Page>
+        <Header />
+        <Switch>
+          <Route path="/step3">
+            <StudySheet filterKanji={filterKanji} />
+          </Route>
+          <Route path="/step2">
+            <Filter allKanji={allKanji}
+                    setFilterKanji={kanji => setFilterKanji(kanji)}
+                    setIsFilterReady={bool => setIsFilterActive(bool)}
+                    setIsReady={bool => setIsStudySheetActive(bool)}
+            />
+          </Route>
+          <Route path="/">
+            <TextareaForm setAllKanji={kanji => setAllKanji(kanji)}
+                          setIsReady={bool => setIsFilterActive(bool)}
+            />
+          </Route>
+        </Switch>
+        <Footer />
+      </Page>
+    </Router>
   );
 }
