@@ -28,21 +28,31 @@ export default function App() {
   const [ allKanji, setAllKanji ] = useState([]);
   const [ filterKanji, setFilterKanji ] = useState([]);
 
+  const resetApp = () => {
+    setAllKanji([]);
+    setFilterKanji([]);
+  }
+
   return (
     <Router>
       <Page>
         <Header />
         <Switch>
           <Route path="/step-3">
-            <StudySheet filterKanji={filterKanji} />
+            <StudySheet filterKanji={filterKanji}
+                        resetApp={resetApp}
+            />
           </Route>
           <Route path="/step-2">
             <Filter allKanji={allKanji}
                     setFilterKanji={kanji => setFilterKanji(kanji)}
+                    resetApp={resetApp}
             />
           </Route>
           <Route path="/step-1">
-            <TextareaForm setAllKanji={kanji => setAllKanji(kanji)} />
+            <TextareaForm setAllKanji={kanji => setAllKanji(kanji)}
+                          resetApp={resetApp}
+            />
           </Route>
           <Route path="/">
             <Home />

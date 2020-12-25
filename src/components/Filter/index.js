@@ -45,6 +45,11 @@ export default function Filter(props) {
     history.push("/step-3")
   }
 
+  const handleStartOverClick = () => {
+    props.resetApp();
+    history.push("/");
+  }
+
   return (
     <Form onSubmit={handleSubmit}>
       <Table>
@@ -60,6 +65,10 @@ export default function Filter(props) {
           <Row>{props.allKanji.map(entry => <TableCell kanji={entry} key={`f${entry}`}/>)}</Row>
         </tbody>
       </Table>
+      <input type="button"
+             value="Start Over"
+             onClick={handleStartOverClick}
+      />
       <input type="submit" value="Next" />
     </Form>
   )

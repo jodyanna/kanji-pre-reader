@@ -15,12 +15,21 @@ export default function TextareaForm(props) {
     history.push("/step-2");
   }
 
+  const handleStartOverClick = () => {
+    props.resetApp();
+    history.push("/");
+  }
+
   return (
     <Form onSubmit={handleSubmit}>
       <Textarea onChange={handleChange}
                 value={text}
                 cols={50}
                 rows={40}
+      />
+      <input type="button"
+             value="Start Over"
+             onClick={handleStartOverClick}
       />
       <input type="submit" value="Next" />
     </Form>

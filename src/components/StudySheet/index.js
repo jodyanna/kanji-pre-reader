@@ -1,18 +1,29 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { Page } from "./style";
 import StudySheetEntry from "../StudySheetEntry";
 
 export default function StudySheet(props) {
   const [ isLoading, setIsLoading ] = useState(true);
-  const [ kanjiData, setKanjiData ] = useState([])
+  const [ kanjiData, setKanjiData ] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     fetchAllKanjiData(props.filterKanji).then(res => setKanjiData(res))
       .then(() => setIsLoading(false))
   }, [props.filterKanji])
 
+  const handleStartOverClick = () => {
+    props.resetApp();
+    history.push("/");
+  }
+
   return (
     <Page>
+      <input type="button"
+             value="Start Over"
+             onClick={handleStartOverClick}
+      />
       {isLoading ?
         "Fetching data..."
         : kanjiData.map(entry => <StudySheetEntry kanji={entry} key={entry.kanji} />)
