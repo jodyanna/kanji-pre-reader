@@ -42,7 +42,7 @@ export default function Filter(props) {
     const checkboxNodeList = document.querySelectorAll('input[type=checkbox]:checked');
     const selectedKanji = Array.from(checkboxNodeList, node => node.value);
     props.setFilterKanji(selectedKanji);
-    history.push("/step3")
+    history.push("/step-3")
   }
 
   return (

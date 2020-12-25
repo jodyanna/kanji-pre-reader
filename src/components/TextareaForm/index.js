@@ -12,13 +12,12 @@ export default function TextareaForm(props) {
   const handleSubmit = event => {
     event.preventDefault();
     props.setAllKanji(parseKanjiFromText(text));
-    history.push("/step2");
+    history.push("/step-2");
   }
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Textarea name="userText"
-                onChange={handleChange}
+      <Textarea onChange={handleChange}
                 value={text}
                 cols={50}
                 rows={40}
