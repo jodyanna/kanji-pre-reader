@@ -6,8 +6,8 @@ export default function StudySheetEntry(props) {
 
   const renderListWithCommas = readings => {
     return readings.map((kana, i) => {
-      if (i === readings.length - 1) return <span>{kana}</span>
-      else return <span>{kana}, </span>
+      if (i === readings.length - 1) return <span key={kana}>{kana}</span>
+      else return <span key={kana}>{kana}, </span>
     })
   }
 
@@ -18,8 +18,6 @@ export default function StudySheetEntry(props) {
     }
     return [...new Set(temp)]
   }
-
-
 
   return (
     <Container>

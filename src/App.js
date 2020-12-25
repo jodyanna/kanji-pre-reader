@@ -23,23 +23,24 @@ export default function App() {
   const [ allKanji, setAllKanji ] = useState([]);
   const [ filterKanji, setFilterKanji ] = useState([]);
   // Boolean switches to step through app procedure
-  const [ isFilterReady, setIsFilterReady ] = useState(false);
-  const [ isStudySheetReady, setIsStudySheetReady ] = useState(false);
+  const [ isFilterActive, setIsFilterActive ] = useState(false);
+  const [ isStudySheetActive, setIsStudySheetActive ] = useState(false);
 
   return (
     <Page>
       <Header />
       <TextareaForm setAllKanji={kanji => setAllKanji(kanji)}
-                    setIsReady={bool => setIsFilterReady(bool)}
+                    setIsReady={bool => setIsFilterActive(bool)}
       />
-      {isFilterReady ?
+      {isFilterActive ?
         <Filter allKanji={allKanji}
                 setFilterKanji={kanji => setFilterKanji(kanji)}
-                setIsReady={bool => setIsStudySheetReady}
+                setIsFilterReady={bool => setIsFilterActive(bool)}
+                setIsReady={bool => setIsStudySheetActive(bool)}
         />
         : ""
       }
-      {isStudySheetReady ?
+      {isStudySheetActive ?
         <StudySheet filterKanji={filterKanji} />
         : ""
       }

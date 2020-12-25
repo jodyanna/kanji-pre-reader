@@ -8,7 +8,8 @@ export default function TextareaForm(props) {
 
   const handleSubmit = event => {
     event.preventDefault();
-    props.setAllKanjiData(parseKanjiFromText(text));
+    props.setAllKanji(parseKanjiFromText(text));
+    props.setIsReady(true);
   }
 
   return (
