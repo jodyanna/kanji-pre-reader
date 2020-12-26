@@ -1,11 +1,11 @@
 import React from "react";
-import { Container } from "./style";
+import { Container, H1 } from "./style";
 
 export default function Header() {
 
   return (
     <Container>
-      <h1>Kanji Pre-Reader v1.0</h1>
+      <H1>Kanji Pre-Reader v1.0</H1>
     </Container>
   )
 }

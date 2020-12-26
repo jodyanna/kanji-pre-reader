@@ -17,8 +17,11 @@ const Page = styled.div`
   display: flex;
   flex-direction: column;
   
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
+  
+  width: 100%;
+  height: 100%;
   
   margin: 0;
   padding: 0;
