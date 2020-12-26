@@ -11,9 +11,10 @@ const Table = styled.table`
   height: 100%;
 `;
 
-const Row = styled.tr`
+const TableRow = styled.tr`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   
   justify-content: center;
   align-items: center;
@@ -32,6 +33,14 @@ const Cell = styled.td`
   outline: 1px solid #000000;
   
   font-size: 2em;
+`;
+
+const ButtonRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  
+  justify-content: space-evenly;
+  align-items: center;
 `;
 
 export default function Filter(props) {
@@ -60,27 +69,33 @@ export default function Filter(props) {
     <Form onSubmit={handleSubmit}>
       <Table>
         <thead>
-          <Row>
+          <TableRow>
             <th>Select the Kanji you do not know.</th>
-          </Row>
-          <Row>
+          </TableRow>
+          <TableRow>
             <td>These are the kanji that will appear on the study sheet.</td>
-          </Row>
+          </TableRow>
         </thead>
         <tbody>
-          <Row>
+          <TableRow>
             {hasKanji ?
               props.allKanji.map(entry => <TableCell kanji={entry} key={`f${entry}`}/>)
               : "No kanji detected."
             }
-          </Row>
+          </TableRow>
         </tbody>
       </Table>
-      <input type="button"
-             value="Start Over"
-             onClick={handleStartOverClick}
-      />
-      {hasKanji ? <input type="submit" value="Next"/> : ""}
+      <ButtonRow>
+        <input type="button"
+               value="Start Over"
+               onClick={handleStartOverClick}
+        />
+        <input type="button"
+               value="Back"
+               onClick={() => history.push("/step-1")}
+        />
+        {hasKanji ? <input type="submit" value="Next"/> : ""}
+      </ButtonRow>
     </Form>
   )
 }
