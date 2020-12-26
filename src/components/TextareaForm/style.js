@@ -17,3 +17,11 @@ export const Label = styled.label`
 
 export const Textarea = styled.textarea`
 `;
+
+export const ButtonRow = styled.div`
+  display: flex;
+  flex-direction: row;
+  
+  justify-content: space-evenly;
+  align-items: center;
+`;

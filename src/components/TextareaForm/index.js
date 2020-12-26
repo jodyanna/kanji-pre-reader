@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-import { Form, Textarea } from "./style";
+import { Form, Textarea, ButtonRow } from "./style";
 
 export default function TextareaForm(props) {
   const [ text, setText ] = useState("Paste text here.");
@@ -27,11 +27,17 @@ export default function TextareaForm(props) {
                 cols={50}
                 rows={40}
       />
-      <input type="button"
-             value="Start Over"
-             onClick={handleStartOverClick}
-      />
-      <input type="submit" value="Next" />
+      <ButtonRow>
+        <input type="button"
+               value="Start Over"
+               onClick={handleStartOverClick}
+        />
+        <input type="button"
+               value="Back"
+               onClick={() => history.push("/")}
+        />
+        <input type="submit" value="Next" />
+      </ButtonRow>
     </Form>
   )
 }
