@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
@@ -35,7 +35,13 @@ const Cell = styled.td`
 `;
 
 export default function Filter(props) {
+  const [ hasKanji, setHasKanji ] = useState(false);
   const history = useHistory();
+
+  useEffect(() => {
+    if (props.allKanji === undefined || props.allKanji.length === 0) setHasKanji(false)
+    else setHasKanji(true)
+  }, [props.allKanji])
 
   const handleSubmit = event => {
     event.preventDefault()
@@ -62,14 +68,19 @@ export default function Filter(props) {
           </Row>
         </thead>
         <tbody>
-          <Row>{props.allKanji.map(entry => <TableCell kanji={entry} key={`f${entry}`}/>)}</Row>
+          <Row>
+            {hasKanji ?
+              props.allKanji.map(entry => <TableCell kanji={entry} key={`f${entry}`}/>)
+              : "No kanji detected."
+            }
+          </Row>
         </tbody>
       </Table>
       <input type="button"
              value="Start Over"
              onClick={handleStartOverClick}
       />
-      <input type="submit" value="Next" />
+      {hasKanji ? <input type="submit" value="Next"/> : ""}
     </Form>
   )
 }
