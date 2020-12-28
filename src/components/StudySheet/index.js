@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Page } from "./style";
 import StudySheetEntry from "../StudySheetEntry";
+import html2canvas from "html2canvas";
+import {jsPDF} from "jspdf";
 
 export default function StudySheet(props) {
   const [ isLoading, setIsLoading ] = useState(true);
@@ -19,16 +21,25 @@ export default function StudySheet(props) {
   }
 
   return (
-    <Page>
+    <div>
       <input type="button"
              value="Start Over"
              onClick={handleStartOverClick}
       />
       {isLoading ?
         "Fetching data..."
-        : kanjiData.map(entry => <StudySheetEntry kanji={entry} key={entry.kanji} />)
+        : <input type="button"
+                 value="Create PDF"
+                 onClick={printDoc}
+          />
       }
-    </Page>
+      <Page id="pdf">
+        {isLoading ?
+          "Fetching data..."
+          : kanjiData.map(entry => <StudySheetEntry kanji={entry} key={entry.kanji} />)
+        }
+      </Page>
+    </div>
   )
 }
 
@@ -47,4 +58,19 @@ const fetchAllKanjiData = async kanji => {
   }
 
   return allKanjiData
+}
+
+const printDoc = () => {
+  html2canvas(document.querySelector("#pdf"))
+    .then(canvas => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF({
+        format: [2550, 3300],
+        unit: "px",
+        hotfixes: ["px_scaling"],
+      });
+      pdf.addImage(imgData, 'JPEG', 0, 0, 2550, 3300);
+      // pdf.output('dataurlnewwindow');
+      pdf.save("download.pdf");
+    });
 }

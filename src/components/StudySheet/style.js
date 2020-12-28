@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Page = styled.div`
   position: absolute;
   
-  top: 0;
+  top: 100;
   left: 0;
 
   width: 2550px;
