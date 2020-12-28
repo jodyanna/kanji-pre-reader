@@ -13,7 +13,7 @@ const Box = styled.div`
   width: 10%;
   height: 100%;
   
-  outline: 1px solid #000000;
+  border: 1px solid #000000;
 `;
 
 export default function PracticeArea() {
