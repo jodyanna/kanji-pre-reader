@@ -5,6 +5,7 @@ import StudySheetEntry from "../StudySheetEntry";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
 import { fetchAllKanjiData } from "./fetchAllKanjiData";
+import { groupKanjiToStudySheets } from "./groupKanjiToStudySheets";
 
 
 export default function StudySheet(props) {
@@ -22,37 +23,6 @@ export default function StudySheet(props) {
     history.push("/");
   }
 
-  /**
-   * Sort an Array of Objects into a two-dimensional Array with nested Arrays having a max length of 7 (holds 8).
-   * @param {Array<KanjiData>} kanjiData - Array of Kanji data objects from kanjiapi.dev.
-   * @returns {Array<Array<string>>}
-   */
-  const groupKanjiToStudySheet = kanjiData => {
-    const pages = []; // nested array
-    let temp = [];
-    // Pages array's elements must hold a maximum of 8 elements
-    const lengthLimit = 7;
-
-    for (let i = 0; i < kanjiData.length; i++) {
-      //
-      if (i % lengthLimit === 0 && i > 0) {
-        temp = [...temp, kanjiData[i]]
-        pages.push(temp);
-        temp = [];
-      }
-      else if (i === kanjiData.length - 1) {
-        temp = [...temp, kanjiData[i]]
-        pages.push(temp);
-        temp = [];
-      }
-      else {
-        temp = [...temp, kanjiData[i]]
-      }
-    }
-
-    return pages
-  }
-
   return (
     <div>
       <input type="button"
@@ -68,7 +38,7 @@ export default function StudySheet(props) {
       }
       {isLoading ?
         "Fetching data..."
-        : groupKanjiToStudySheet(kanjiData).map((page, i) => {
+        : groupKanjiToStudySheets(kanjiData).map((page, i) => {
           return (
             <Page id={`pdf-${i}`}>
               {page.map(entry => <StudySheetEntry kanji={entry} key={entry.kanji} />)}
