@@ -38,9 +38,37 @@ const parseKanjiFromText = text => {
   return [...new Set(text.match(kanjiRegX))]
 }
 
+
+/**
+ * Convert an array of elements into a nested array with each element containing an array the has no more than 8
+ * elements
+ * @param kanjiData
+ * @returns {[[]]}
+ */
+const groupKanjiIntoPages = kanjiData => {
+  // Pages array's elements must hold a maximum of 8 elements
+  const pages = [];
+  let temp = [];
+  const lengthLimit = 8;
+
+  for (let i = 0; i < kanjiData.length; i++) {
+    if (i % lengthLimit === 0 && i > 0) {
+      pages.push(temp);
+      // empty temp array
+      temp = [];
+    }
+    else {
+      temp = [...temp, kanjiData[i]]
+    }
+  }
+
+  return pages
+}
+
 // export functions as object
 module.exports = {
   convertHexesToNums: convertHexesToNums,
   convertCharsToHexes: convertCharsToHexes,
   parseKanjiFromText: parseKanjiFromText,
+  groupKanjiIntoPages: groupKanjiIntoPages,
 }

@@ -19,3 +19,14 @@ test("parseKanjiFromText", () => {
   expect(util.parseKanjiFromText("漢字 かんじ 漢字 カンジ")).toStrictEqual(["漢", "字"]);
   expect(util.parseKanjiFromText("一 䶵")).toStrictEqual(["一", "䶵"]);
 })
+
+test("groupKanjiIntoPages", () => {
+  expect(util.groupKanjiIntoPages(["漢", "字", "漢", "字", "漢", "字", "漢", "字"]))
+    .toStrictEqual([["漢", "字", "漢", "字", "漢", "字", "漢", "字"]]);
+  expect(util.groupKanjiIntoPages(
+    ["漢", "字", "漢", "字", "漢", "字", "漢", "字", "漢", "字", "漢", "字", "漢", "字", "漢", "字"]
+  ))
+    .toStrictEqual(
+      [["漢", "字", "漢", "字", "漢", "字", "漢", "字"], ["漢", "字", "漢", "字", "漢", "字", "漢", "字"]]
+    );
+})
