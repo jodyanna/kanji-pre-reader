@@ -1,9 +1,13 @@
+// Dependencies
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Page } from "./style";
-import StudySheetEntry from "../StudySheetEntry";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
+// Styled-components
+import { Page } from "./style";
+// Components
+import StudySheetEntry from "../StudySheetEntry";
+// Utility functions
 import { fetchAllKanjiData } from "./fetchAllKanjiData";
 import { groupKanjiToStudySheets } from "./groupKanjiToStudySheets";
 
