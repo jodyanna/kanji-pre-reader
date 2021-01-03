@@ -21,20 +21,18 @@ export const groupKanjiToStudySheets = kanjiData => {
   for (let i = 0; i < kanjiData.length; i++) {
     // When current tempPage is at limit, add to pages and start new tempPage
     if (i % pageLengthLimit === 0 && i > 0) {
-      tempPage = [...tempPage, kanjiData[i]]
+      tempPage.push(kanjiData[i]);
       pages.push(tempPage);
       tempPage = [];
     }
     // When last input, add current tempPage to pages
     else if (i === kanjiData.length - 1) {
-      tempPage = [...tempPage, kanjiData[i]]
+      tempPage.push(kanjiData[i]);
       pages.push(tempPage);
       tempPage = [];
     }
     // Limit not reached, just add to tempPage
-    else {
-      tempPage = [...tempPage, kanjiData[i]]
-    }
+    else tempPage.push(kanjiData[i]);
   }
 
   return pages
