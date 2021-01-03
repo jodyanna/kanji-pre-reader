@@ -5,9 +5,9 @@ export const Container = styled.div`
   flex-direction: row;
   
   width: 100%;
-  height: 10%;
+  height: 360px;
   
-  margin-bottom: 3em;
+  margin: 40px 0;
   
   border: 1px solid #000000;
 `;
@@ -36,8 +36,6 @@ export const KanjiCol = styled.div`
   
   justify-content: flex-start;
   align-items: center;
-  
-  
 `;
 
 export const KanjiOverview = styled.div`

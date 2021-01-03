@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 // Styled-components
-import { Page } from "./style";
+import {EntryWrapper, Page} from "./style";
 // Components
 import StudySheetEntry from "../StudySheetEntry";
 // Utility functions
@@ -40,11 +40,13 @@ export default function StudySheet(props) {
           />
       }
       {isLoading ?
-        "Fetching data..."
+        ""
         : groupKanjiToStudySheets(kanjiData).map((page, i) => {
           return (
             <Page id={`pdf-${i}`}>
-              {page.map(entry => <StudySheetEntry kanji={entry} key={entry.kanji} />)}
+              <EntryWrapper>
+                {page.map(entry => <StudySheetEntry kanji={entry} key={entry.kanji} />)}
+              </EntryWrapper>
             </Page>
           )
         })

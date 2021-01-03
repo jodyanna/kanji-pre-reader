@@ -25,6 +25,8 @@ const Page = styled.div`
   
   margin: 0;
   padding: 0;
+  
+  overflow: hidden;
 `;
 
 export default function App() {
