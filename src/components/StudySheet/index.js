@@ -36,8 +36,8 @@ export default function StudySheet(props) {
       {isLoading ?
         "Fetching data..."
         : <input type="button"
-                 value="Create PDF"
-                 onClick={printDoc}
+                 value="Download PDF"
+                 onClick={() => downloadPDF(groupKanjiToStudySheets(kanjiData))}
           />
       }
       {isLoading ?
@@ -56,17 +56,22 @@ export default function StudySheet(props) {
 
 
 
-const printDoc = () => {
-  html2canvas(document.querySelector("#pdf-0"))
+const downloadPDF = pages => {
+  const pdf = new jsPDF({
+    format: [2550, 3300],
+    unit: "px",
+    hotfixes: ["px_scaling"],
+  });
+  const numOfPages = pages.length;
+
+  for (let i = 0; i < numOfPages; i++) {
+    html2canvas(document.querySelector(`#pdf-${i}`))
     .then(canvas => {
       const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF({
-        format: [2550, 3300],
-        unit: "px",
-        hotfixes: ["px_scaling"],
-      });
+      if (i !== 0) pdf.insertPage(i);
       pdf.addImage(imgData, 'JPEG', 0, 0, 2550, 3300);
-      // pdf.output('dataurlnewwindow');
-      pdf.save("download.pdf");
-    });
+    })
+    .then(() => pdf.save("download.pdf"))
+  }
+  // pdf.output('dataurlnewwindow');
 }
