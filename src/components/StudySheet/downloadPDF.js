@@ -19,7 +19,7 @@ export const downloadPDF = pages => {
         // Insert new page after default page
         if (i !== 0) pdf.insertPage(i);
         const imgData = canvas.toDataURL('image/png');
-        pdf.addImage(imgData, 'JPEG', 0, 0, 2550, 3300);
+        pdf.addImage(imgData, 'JPEG', 0, 0, 2550, 3300, `page-${i}`, "FAST");
       })
       .then(() => {
         // Download only on last iteration
