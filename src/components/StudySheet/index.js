@@ -1,8 +1,6 @@
 // Dependencies
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import html2canvas from "html2canvas";
-import { jsPDF } from "jspdf";
 // Styled-components
 import { Page } from "./style";
 // Components
@@ -10,6 +8,7 @@ import StudySheetEntry from "../StudySheetEntry";
 // Utility functions
 import { fetchAllKanjiData } from "./fetchAllKanjiData";
 import { groupKanjiToStudySheets } from "./groupKanjiToStudySheets";
+import { downloadPDF } from "./downloadPDF";
 
 
 export default function StudySheet(props) {
@@ -37,7 +36,7 @@ export default function StudySheet(props) {
         "Fetching data..."
         : <input type="button"
                  value="Download PDF"
-                 onClick={() => downloadPDF(groupKanjiToStudySheets(kanjiData))}
+                 onClick={() => downloadPDF(groupKanjiToStudySheets(kanjiData).length)}
           />
       }
       {isLoading ?
@@ -52,26 +51,4 @@ export default function StudySheet(props) {
       }
     </div>
   )
-}
-
-
-
-const downloadPDF = pages => {
-  const pdf = new jsPDF({
-    format: [2550, 3300],
-    unit: "px",
-    hotfixes: ["px_scaling"],
-  });
-  const numOfPages = pages.length;
-
-  for (let i = 0; i < numOfPages; i++) {
-    html2canvas(document.querySelector(`#pdf-${i}`))
-    .then(canvas => {
-      const imgData = canvas.toDataURL('image/png');
-      if (i !== 0) pdf.insertPage(i);
-      pdf.addImage(imgData, 'JPEG', 0, 0, 2550, 3300);
-    })
-    .then(() => pdf.save("download.pdf"))
-  }
-  // pdf.output('dataurlnewwindow');
 }
