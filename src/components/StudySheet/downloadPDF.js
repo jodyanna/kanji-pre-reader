@@ -21,7 +21,10 @@ export const downloadPDF = pages => {
         const imgData = canvas.toDataURL('image/png');
         pdf.addImage(imgData, 'JPEG', 0, 0, 2550, 3300);
       })
-      .then(() => pdf.save("download.pdf"))
+      .then(() => {
+        // Download only on last iteration
+        if (i === pages - 1) pdf.save("download.pdf")
+      })
       .catch(err => console.log(err))
   }
 }
