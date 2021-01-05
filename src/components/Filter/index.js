@@ -1,77 +1,45 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import styled from "styled-components";
 
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  
-  justify-content: flex-start;
-  align-items: center;
-  
-  width: 100%;
-  height: 100%;
-`;
-
-const Table = styled.table`
-  display: flex;
-  flex-direction: column;
-  
-  justify-content: space-evenly;
-  align-items: center;
-  
-  width: 100%;
-  
-  margin: 0;
-`;
-
-const TableRow = styled.tr`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  
-  justify-content: flex-start;
-  align-items: center;
-`;
-
-const Cell = styled.td`
-  display: flex;
-  flex-direction: column;
-  
-  justify-content: center;
-  align-items: center;
-  
-  margin: 0.5em;
-  padding: 0.5em;
-  
-  outline: 1px solid #000000;
-  
-  font-size: 2em;
-`;
-
-const ButtonRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  
-  justify-content: space-evenly;
-  align-items: center;
-`;
+import { Form, Table, TableRow, ButtonRow, Cell } from "./style";
 
 export default function Filter(props) {
   const [ hasKanji, setHasKanji ] = useState(false);
+  const [ checkboxes, setCheckboxes ] = useState([{}])
   const history = useHistory();
 
   useEffect(() => {
     if (props.allKanji === undefined || props.allKanji.length === 0) setHasKanji(false)
-    else setHasKanji(true)
+    else {
+      setHasKanji(true);
+      setCheckboxes(
+        props.allKanji.map(entry => {
+          return {
+            value: entry,
+            isChecked: false,
+          }
+        })
+      )
+    }
   }, [props.allKanji])
 
+  const handleCheck = event => {
+    for (let i = 0; i < checkboxes.length; i++) {
+      if (event.target.value === checkboxes[i].value) {
+        let temp = [...checkboxes];
+        temp[i].isChecked = !checkboxes[i].isChecked;
+        setCheckboxes([...temp]);
+        break;
+      }
+    }
+  }
+
   const handleSubmit = event => {
-    event.preventDefault()
+    event.preventDefault();
     const checkboxNodeList = document.querySelectorAll('input[type=checkbox]:checked');
     const selectedKanji = Array.from(checkboxNodeList, node => node.value);
     props.setFilterKanji(selectedKanji);
-    history.push("/step-3")
+    history.push("/step-3");
   }
 
   const handleStartOverClick = () => {
@@ -85,6 +53,7 @@ export default function Filter(props) {
         <thead>
           <TableRow>
             <th>Select the Kanji you do not know.</th>
+            <td>{props.allKanji.length}</td>
           </TableRow>
           <TableRow>
             <td>These are the kanji that will appear on the study sheet.</td>
@@ -93,12 +62,18 @@ export default function Filter(props) {
         <tbody>
           <TableRow>
             {hasKanji ?
-              props.allKanji.map(entry => <TableCell kanji={entry} key={`f${entry}`}/>)
+              checkboxes.map(entry => <Checkbox kanji={entry}
+                                                key={`f-${entry.value}`}
+                                                value={entry.value}
+                                                handleCheck={handleCheck}
+                />
+              )
               : "No kanji detected."
             }
           </TableRow>
         </tbody>
       </Table>
+
       <ButtonRow>
         <input type="button"
                value="Start Over"
@@ -114,12 +89,14 @@ export default function Filter(props) {
   )
 }
 
-function TableCell(props) {
+function Checkbox(props) {
   return (
     <Cell>
-      <label>{props.kanji}</label>
-      <input type={"checkbox"}
-             value={props.kanji}
+      <label>{props.kanji.value}</label>
+      <input type="checkbox"
+             value={props.kanji.value}
+             checked={props.kanji.isChecked}
+             onClick={props.handleCheck}
       />
     </Cell>
   )
