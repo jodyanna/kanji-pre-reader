@@ -5,11 +5,13 @@ import { Form, Table, TableRow, ButtonRow, Cell } from "./style";
 
 export default function Filter(props) {
   const [ hasKanji, setHasKanji ] = useState(false);
-  const [ checkboxes, setCheckboxes ] = useState([{}])
+  const [ checkboxes, setCheckboxes ] = useState([{},])
   const history = useHistory();
 
   useEffect(() => {
+    // No kanji detected from user textarea input
     if (props.allKanji === undefined || props.allKanji.length === 0) setHasKanji(false)
+    // We have the kanji
     else {
       setHasKanji(true);
       setCheckboxes(
@@ -34,11 +36,26 @@ export default function Filter(props) {
     }
   }
 
+  const handleCheckAllClick = () => {
+    setCheckboxes(checkboxes.map(entry => {
+      entry.isChecked = true;
+      return entry
+    }))
+  }
+
+  const handleUncheckAllClick = () => {
+    setCheckboxes(checkboxes.map(entry => {
+      entry.isChecked = false;
+      return entry
+    }))
+  }
+
   const handleSubmit = event => {
     event.preventDefault();
-    const checkboxNodeList = document.querySelectorAll('input[type=checkbox]:checked');
-    const selectedKanji = Array.from(checkboxNodeList, node => node.value);
-    props.setFilterKanji(selectedKanji);
+    // Get all checked kanji and set to App state.
+    props.setFilterKanji(checkboxes.map(entry => entry.isChecked ? entry.value : null)
+      // For eliminating unchecked kanji null values from array.
+      .filter(value => value !== null));
     history.push("/step-3");
   }
 
@@ -70,6 +87,18 @@ export default function Filter(props) {
               )
               : "No kanji detected."
             }
+          </TableRow>
+          <TableRow>
+            <input type="button"
+                   value="Check All"
+                   onClick={handleCheckAllClick}
+            />
+          </TableRow>
+          <TableRow>
+            <input type="button"
+                   value="Uncheck All"
+                   onClick={handleUncheckAllClick}
+            />
           </TableRow>
         </tbody>
       </Table>
