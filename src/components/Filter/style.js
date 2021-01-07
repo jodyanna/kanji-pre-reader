@@ -32,7 +32,7 @@ export const TableRow = styled.tr`
   align-items: center;
 `;
 
-export const Cell = styled.td`
+export const TableCell = styled.td`
   display: flex;
   flex-direction: column;
   

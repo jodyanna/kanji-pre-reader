@@ -1,7 +1,11 @@
+// Dependencies
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+// Components
+import { Checkbox} from "./Checkbox";
+// Styled-components
+import { Form, Table, TableRow, ButtonRow } from "./style";
 
-import { Form, Table, TableRow, ButtonRow, Cell } from "./style";
 
 export default function Filter(props) {
   const [ hasKanji, setHasKanji ] = useState(false);
@@ -93,13 +97,16 @@ export default function Filter(props) {
                    value="Check All"
                    onClick={handleCheckAllClick}
             />
-          </TableRow>
-          <TableRow>
             <input type="button"
                    value="Uncheck All"
                    onClick={handleUncheckAllClick}
             />
           </TableRow>
+
+          <TableRow>
+            Count: {checkboxes.filter(checkbox => checkbox.isChecked).length}
+          </TableRow>
+
         </tbody>
       </Table>
 
@@ -115,18 +122,5 @@ export default function Filter(props) {
         {hasKanji ? <input type="submit" value="Next"/> : ""}
       </ButtonRow>
     </Form>
-  )
-}
-
-function Checkbox(props) {
-  return (
-    <Cell>
-      <label>{props.kanji.value}</label>
-      <input type="checkbox"
-             value={props.kanji.value}
-             checked={props.kanji.isChecked}
-             onClick={props.handleCheck}
-      />
-    </Cell>
   )
 }
