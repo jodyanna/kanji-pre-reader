@@ -15,7 +15,7 @@ export default function Filter(props) {
   useEffect(() => {
     // No kanji detected from user textarea input
     if (props.allKanji === undefined || props.allKanji.length === 0) setHasKanji(false)
-    // We have the kanji
+    // We have the kanji, set state
     else {
       setHasKanji(true);
       setCheckboxes(
@@ -68,6 +68,17 @@ export default function Filter(props) {
     history.push("/");
   }
 
+  const renderPageCount = () => {
+    const kanjiCount = checkboxes.filter(checkbox => checkbox.isChecked).length;
+    const pageKanjiLimit = 8;
+
+    // StudySheet kanji limit is 8 per page
+    if (kanjiCount === 0) return 0
+    else if (kanjiCount > 0 && kanjiCount < 9) return  1
+    else if (kanjiCount % 8 === 0) return kanjiCount / pageKanjiLimit
+    else return Math.floor(kanjiCount / pageKanjiLimit) + 1
+  }
+
   return (
     <Form onSubmit={handleSubmit}>
       <Table>
@@ -104,7 +115,8 @@ export default function Filter(props) {
           </TableRow>
 
           <TableRow>
-            Count: {checkboxes.filter(checkbox => checkbox.isChecked).length}
+            Kanji Count: {checkboxes.filter(checkbox => checkbox.isChecked).length}
+            Page Count: {renderPageCount()}
           </TableRow>
 
         </tbody>

@@ -45,6 +45,8 @@ export const TableCell = styled.td`
   outline: 1px solid #000000;
   
   font-size: 2em;
+
+  box-shadow: 5px 5px 8px -4px rgba(0,0,0,0.7);
 `;
 
 export const ButtonRow = styled.div`
