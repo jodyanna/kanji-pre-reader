@@ -33,6 +33,10 @@ export const TableRow = styled.tr`
 `;
 
 export const TableCell = styled.td`
+  
+`;
+
+export const Label = styled.label`
   display: flex;
   flex-direction: column;
   
@@ -47,6 +51,16 @@ export const TableCell = styled.td`
   font-size: 2em;
 
   box-shadow: 5px 5px 8px -4px rgba(0,0,0,0.7);
+  
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const Box = styled.input`
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const ButtonRow = styled.div`

@@ -1,15 +1,15 @@
 import React from "react";
-import { TableCell } from "./style";
+import { Box, Label } from "./style";
 
 export  function Checkbox(props) {
   return (
-    <TableCell>
-      <label>{props.kanji.value}</label>
-      <input type="checkbox"
-             value={props.kanji.value}
-             checked={props.kanji.isChecked}
-             onClick={props.handleCheck}
+    <Label>
+      {props.kanji.value}
+      <Box type="checkbox"
+           value={props.kanji.value}
+           checked={props.kanji.isChecked}
+           onClick={props.handleCheck}
       />
-    </TableCell>
+    </Label>
   )
 }

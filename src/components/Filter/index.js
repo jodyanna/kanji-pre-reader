@@ -85,7 +85,6 @@ export default function Filter(props) {
         <thead>
           <TableRow>
             <th>Select the Kanji you do not know.</th>
-            <td>{props.allKanji.length}</td>
           </TableRow>
           <TableRow>
             <td>These are the kanji that will appear on the study sheet.</td>
@@ -115,7 +114,9 @@ export default function Filter(props) {
           </TableRow>
 
           <TableRow>
-            Kanji Count: {checkboxes.filter(checkbox => checkbox.isChecked).length}
+            Kanji Count: {checkboxes.filter(checkbox => checkbox.isChecked).length} / {props.allKanji.length}
+          </TableRow>
+          <TableRow>
             Page Count: {renderPageCount()}
           </TableRow>
 
