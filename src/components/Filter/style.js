@@ -19,8 +19,13 @@ export const Table = styled.table`
   align-items: center;
   
   width: 100%;
+  height: 80%;
   
   margin: 0;
+`;
+
+export const TableBody = styled.tbody`
+  overflow: scroll;
 `;
 
 export const TableRow = styled.tr`
