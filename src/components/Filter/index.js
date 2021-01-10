@@ -4,8 +4,8 @@ import { useHistory } from "react-router-dom";
 // Components
 import { Checkbox } from "./Checkbox";
 // Styled-components
-import {Form, Table, TableBody, TableRow, TableCol, ButtonRow, TableFooter, FlexRow} from "./style";
-import { Button } from "../Shared/Button";
+import {Form, Table, TableBody, TableRow, TableCol, TableFooter, FlexRow} from "./style";
+import { AppNav, Button } from "../Shared/style";
 
 
 export default function Filter(props) {
@@ -141,7 +141,7 @@ export default function Filter(props) {
         </TableFooter>
       </Table>
 
-      <ButtonRow>
+      <AppNav>
         <Button type="button"
                 value="Start Over"
                 onClick={handleStartOverClick}
@@ -159,7 +159,7 @@ export default function Filter(props) {
           :
           ""
         }
-      </ButtonRow>
+      </AppNav>
     </Form>
   )
 }

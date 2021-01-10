@@ -12,3 +12,13 @@ export const Button = styled.input`
     cursor: pointer;
   }
 `;
+
+export const AppNav = styled.div`
+  display: flex;
+  flex-direction: row;
+  
+  justify-content: flex-start;
+  align-items: center;
+  
+  width: 100%;
+`;
