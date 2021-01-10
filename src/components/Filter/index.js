@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { Checkbox } from "./Checkbox";
 // Styled-components
 import {Form, Table, TableBody, TableRow, TableCol, ButtonRow, TableFooter, FlexRow} from "./style";
+import { Button } from "../Shared/Button";
 
 
 export default function Filter(props) {
@@ -117,18 +118,18 @@ export default function Filter(props) {
           <TableRow>
             <TableCol>
               <FlexRow>
-                <input type="button"
-                       value="Check All"
+                <Button type="button"
+                       value="Select All"
                        onClick={handleCheckAllClick}
                 />
-                <input type="button"
-                       value="Uncheck All"
+                <Button type="button"
+                       value="Deselect All"
                        onClick={handleUncheckAllClick}
                 />
               </FlexRow>
             </TableCol>
 
-            <TableCol pushRight={true}>
+            <TableCol pushRight={true} >
               <div>
                 Kanji Count: {checkboxes.filter(checkbox => checkbox.isChecked).length} / {props.allKanji.length}
               </div>
@@ -138,23 +139,22 @@ export default function Filter(props) {
             </TableCol>
           </TableRow>
         </TableFooter>
-
       </Table>
 
       <ButtonRow>
-        <input type="button"
-               value="Start Over"
-               onClick={handleStartOverClick}
+        <Button type="button"
+                value="Start Over"
+                onClick={handleStartOverClick}
         />
-        <input type="button"
-               value="Back"
-               onClick={() => history.push("/step-1")}
+        <Button type="button"
+                value="Back"
+                onClick={() => history.push("/step-1")}
         />
         {hasKanji
           ?
-          <input type="submit"
-                 value="Next"
-                 disabled={validateForm()}
+          <Button type="submit"
+                  value="Next"
+                  disabled={validateForm()}
           />
           :
           ""
