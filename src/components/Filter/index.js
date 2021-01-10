@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 // Components
-import { Checkbox} from "./Checkbox";
+import { Checkbox } from "./Checkbox";
 // Styled-components
-import { Form, Table, TableBody, TableRow, ButtonRow } from "./style";
+import {Form, Table, TableBody, TableRow, TableCol, ButtonRow, TableFooter, FlexRow} from "./style";
 
 
 export default function Filter(props) {
@@ -89,6 +89,7 @@ export default function Filter(props) {
   return (
     <Form onSubmit={handleSubmit}>
       <Table>
+
         <thead>
           <TableRow>
             <th>Select the Kanji you do not know.</th>
@@ -97,6 +98,7 @@ export default function Filter(props) {
             <td>These are the kanji that will appear on the study sheet.</td>
           </TableRow>
         </thead>
+
         <TableBody>
           <TableRow>
             {hasKanji ?
@@ -111,33 +113,32 @@ export default function Filter(props) {
           </TableRow>
         </TableBody>
 
-        <tfoot>
+        <TableFooter>
           <TableRow>
-            <td>
-              <input type="button"
-                     value="Check All"
-                     onClick={handleCheckAllClick}
-              />
-            </td>
-            <td>
-              <input type="button"
-                     value="Uncheck All"
-                     onClick={handleUncheckAllClick}
-              />
-            </td>
-          </TableRow>
+            <TableCol>
+              <FlexRow>
+                <input type="button"
+                       value="Check All"
+                       onClick={handleCheckAllClick}
+                />
+                <input type="button"
+                       value="Uncheck All"
+                       onClick={handleUncheckAllClick}
+                />
+              </FlexRow>
+            </TableCol>
 
-          <TableRow>
-            <td>
-              Kanji Count: {checkboxes.filter(checkbox => checkbox.isChecked).length} / {props.allKanji.length}
-            </td>
+            <TableCol pushRight={true}>
+              <div>
+                Kanji Count: {checkboxes.filter(checkbox => checkbox.isChecked).length} / {props.allKanji.length}
+              </div>
+              <div>
+                Page Count: {renderPageCount()}
+              </div>
+            </TableCol>
           </TableRow>
-          <TableRow>
-            <td>
-              Page Count: {renderPageCount()}
-            </td>
-          </TableRow>
-        </tfoot>
+        </TableFooter>
+
       </Table>
 
       <ButtonRow>
