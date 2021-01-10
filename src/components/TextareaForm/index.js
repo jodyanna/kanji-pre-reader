@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 
 import { Form, Textarea, ButtonRow } from "./style";
 
 export default function TextareaForm(props) {
-  const [ text, setText ] = useState("Paste text here.");
   const history = useHistory();
 
-  const handleChange = event => setText(event.target.value);
+  const handleChange = event => props.setText(event.target.value);
 
   const handleSubmit = event => {
     event.preventDefault();
-    props.setAllKanji(parseKanjiFromText(text));
+    props.setAllKanji(parseKanjiFromText(props.text));
     history.push("/step-2");
   }
 
@@ -23,7 +22,7 @@ export default function TextareaForm(props) {
   return (
     <Form onSubmit={handleSubmit}>
       <Textarea onChange={handleChange}
-                value={text}
+                value={props.text}
                 cols={50}
                 rows={40}
       />

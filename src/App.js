@@ -30,10 +30,12 @@ const Page = styled.div`
 `;
 
 export default function App() {
+  const [ text, setText ] = useState("Paste text here.");
   const [ allKanji, setAllKanji ] = useState([]);
   const [ filterKanji, setFilterKanji ] = useState([]);
 
   const resetApp = () => {
+    setText("Paste text here.")
     setAllKanji([]);
     setFilterKanji([]);
   }
@@ -55,7 +57,9 @@ export default function App() {
             />
           </Route>
           <Route path="/step-1">
-            <TextareaForm setAllKanji={kanji => setAllKanji(kanji)}
+            <TextareaForm text={text}
+                          setText={text => setText(text)}
+                          setAllKanji={kanji => setAllKanji(kanji)}
                           resetApp={resetApp}
             />
           </Route>
