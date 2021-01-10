@@ -9,7 +9,7 @@ import { Form, Table, TableBody, TableRow, ButtonRow } from "./style";
 
 export default function Filter(props) {
   const [ hasKanji, setHasKanji ] = useState(false);
-  const [ checkboxes, setCheckboxes ] = useState([{},])
+  const [ checkboxes, setCheckboxes ] = useState([{},]);
   const history = useHistory();
 
   useEffect(() => {
@@ -25,7 +25,7 @@ export default function Filter(props) {
             isChecked: false,
           }
         })
-      )
+      );
     }
   }, [props.allKanji])
 
@@ -63,6 +63,13 @@ export default function Filter(props) {
     history.push("/step-3");
   }
 
+  const validateForm = () => {
+    const currentCheckedKanjiCount = checkboxes.filter(checkbox => checkbox.isChecked).length;
+
+    // Current imposed limit is 2 pages (16 kanji)
+    return !(currentCheckedKanjiCount > 0 && currentCheckedKanjiCount < 17)
+  }
+
   const handleStartOverClick = () => {
     props.resetApp();
     history.push("/");
@@ -97,29 +104,39 @@ export default function Filter(props) {
                                                 key={`f-${entry.value}`}
                                                 value={entry.value}
                                                 handleCheck={handleCheck}
+                                                defaultChecked={false}
                 />
               )
-              : "No kanji detected."
+              : <td>"No kanji detected."</td>
             }
           </TableRow>
         </TableBody>
+
         <tfoot>
           <TableRow>
-            <input type="button"
-                   value="Check All"
-                   onClick={handleCheckAllClick}
-            />
-            <input type="button"
-                   value="Uncheck All"
-                   onClick={handleUncheckAllClick}
-            />
+            <td>
+              <input type="button"
+                     value="Check All"
+                     onClick={handleCheckAllClick}
+              />
+            </td>
+            <td>
+              <input type="button"
+                     value="Uncheck All"
+                     onClick={handleUncheckAllClick}
+              />
+            </td>
           </TableRow>
 
           <TableRow>
-            Kanji Count: {checkboxes.filter(checkbox => checkbox.isChecked).length} / {props.allKanji.length}
+            <td>
+              Kanji Count: {checkboxes.filter(checkbox => checkbox.isChecked).length} / {props.allKanji.length}
+            </td>
           </TableRow>
           <TableRow>
-            Page Count: {renderPageCount()}
+            <td>
+              Page Count: {renderPageCount()}
+            </td>
           </TableRow>
         </tfoot>
       </Table>
@@ -133,7 +150,15 @@ export default function Filter(props) {
                value="Back"
                onClick={() => history.push("/step-1")}
         />
-        {hasKanji ? <input type="submit" value="Next"/> : ""}
+        {hasKanji
+          ?
+          <input type="submit"
+                 value="Next"
+                 disabled={validateForm()}
+          />
+          :
+          ""
+        }
       </ButtonRow>
     </Form>
   )
