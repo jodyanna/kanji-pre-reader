@@ -104,7 +104,6 @@ export default function Filter(props) {
                                                 key={`f-${entry.value}`}
                                                 value={entry.value}
                                                 handleCheck={handleCheck}
-                                                defaultChecked={false}
                 />
               )
               : <td>"No kanji detected."</td>

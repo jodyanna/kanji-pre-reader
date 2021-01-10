@@ -9,7 +9,7 @@ export  function Checkbox(props) {
         <Box type="checkbox"
              value={props.kanji.value}
              checked={props.kanji.isChecked}
-             onClick={props.handleCheck}
+             onChange={props.handleCheck}
         />
       </Label>
     </td>
