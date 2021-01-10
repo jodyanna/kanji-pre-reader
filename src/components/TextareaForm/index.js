@@ -1,7 +1,12 @@
+// Dependencies
 import React from "react";
 import { useHistory } from "react-router-dom";
+// Styled-components
+import { Form, Textarea } from "./style";
+import { AppNav, Button } from "../Shared/style";
+// Utility Functions
+import { parseKanjiFromText } from "./parseKanjiFromText";
 
-import { Form, Textarea, ButtonRow } from "./style";
 
 export default function TextareaForm(props) {
   const history = useHistory();
@@ -26,24 +31,17 @@ export default function TextareaForm(props) {
                 cols={50}
                 rows={40}
       />
-      <ButtonRow>
-        <input type="button"
+      <AppNav>
+        <Button type="button"
                value="Start Over"
                onClick={handleStartOverClick}
         />
-        <input type="button"
+        <Button type="button"
                value="Back"
                onClick={() => history.push("/")}
         />
-        <input type="submit" value="Next" />
-      </ButtonRow>
+        <Button type="submit" value="Next" />
+      </AppNav>
     </Form>
   )
-}
-
-const parseKanjiFromText = text => {
-  const kanjiRegX = /[\u4e00-\u9faf\u3400-\u4dbf]/g
-
-  // use set to remove duplicates
-  return [...new Set(text.match(kanjiRegX))]
 }
