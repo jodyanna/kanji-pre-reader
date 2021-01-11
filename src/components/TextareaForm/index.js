@@ -28,8 +28,8 @@ export default function TextareaForm(props) {
     <Form onSubmit={handleSubmit}>
       <Textarea onChange={handleChange}
                 value={props.text}
-                cols={50}
-                rows={40}
+                cols={40}
+                rows={30}
       />
       <AppNav>
         <Button type="button"

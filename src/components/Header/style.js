@@ -8,8 +8,7 @@ export const Container = styled.header`
   align-items: baseline;
   
   width: 100%;
-  
-  margin: 0 0 1em 0;
+  height: 10%;
 `;
 
 export const H1 = styled.h1`

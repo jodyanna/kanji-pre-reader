@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 // Components
 import { Checkbox } from "./Checkbox";
 // Styled-components
-import {Form, Table, TableBody, TableRow, TableCol, TableFooter, FlexRow} from "./style";
+import { Form, Table, TableBody, TableRow, TableCol, TableHeader, FlexRow } from "./style";
 import { AppNav, Button } from "../Shared/style";
 
 
@@ -91,14 +91,38 @@ export default function Filter(props) {
     <Form onSubmit={handleSubmit}>
       <Table>
 
-        <thead>
-          <TableRow>
+        <TableHeader>
+          <TableRow center={true}>
             <th>Select the Kanji you do not know.</th>
           </TableRow>
-          <TableRow>
+          <TableRow center={true}>
             <td>These are the kanji that will appear on the study sheet.</td>
           </TableRow>
-        </thead>
+
+          <TableRow>
+            <TableCol>
+              <FlexRow>
+                <Button type="button"
+                        value="Select All"
+                        onClick={handleCheckAllClick}
+                />
+                <Button type="button"
+                        value="Deselect All"
+                        onClick={handleUncheckAllClick}
+                />
+              </FlexRow>
+            </TableCol>
+
+            <TableCol pushRight={true} >
+              <div>
+                Kanji Count: {checkboxes.filter(checkbox => checkbox.isChecked).length} / {props.allKanji.length}
+              </div>
+              <div>
+                Page Count: {renderPageCount()}
+              </div>
+            </TableCol>
+          </TableRow>
+        </TableHeader>
 
         <TableBody>
           <TableRow>
@@ -113,32 +137,6 @@ export default function Filter(props) {
             }
           </TableRow>
         </TableBody>
-
-        <TableFooter>
-          <TableRow>
-            <TableCol>
-              <FlexRow>
-                <Button type="button"
-                       value="Select All"
-                       onClick={handleCheckAllClick}
-                />
-                <Button type="button"
-                       value="Deselect All"
-                       onClick={handleUncheckAllClick}
-                />
-              </FlexRow>
-            </TableCol>
-
-            <TableCol pushRight={true} >
-              <div>
-                Kanji Count: {checkboxes.filter(checkbox => checkbox.isChecked).length} / {props.allKanji.length}
-              </div>
-              <div>
-                Page Count: {renderPageCount()}
-              </div>
-            </TableCol>
-          </TableRow>
-        </TableFooter>
       </Table>
 
       <AppNav>

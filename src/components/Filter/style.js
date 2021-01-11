@@ -9,7 +9,7 @@ export const Form = styled.form`
   align-items: center;
   
   width: 100%;
-  height: 100%;
+  height: 80%;
 `;
 
 export const Label = styled.label`
@@ -48,7 +48,7 @@ export const Table = styled.table`
   align-items: center;
   
   width: 100%;
-  height: 80%;
+  height: 85%;
   
   margin: 0;
 `;
@@ -57,9 +57,9 @@ export const TableBody = styled.tbody`
   overflow: scroll;
 `;
 
-export const TableFooter = styled.tfoot`
+export const TableHeader = styled.thead`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   
   justify-content: flex-start;
   align-items: center;
@@ -72,7 +72,8 @@ export const TableRow = styled.tr`
   flex-direction: row;
   flex-wrap: wrap;
   
-  justify-content: flex-start;
+  justify-content: ${props => props.center ? "center;" : "flex-start;"}
+  
   align-items: center;
   
   width: 100%;
@@ -101,14 +102,6 @@ export const FlexCol = styled.div`
   display: flex;
   flex-direction: column;
   
-  justify-content: center;
-  align-items: center;
-`;
-
-export const ButtonRow = styled.div`
-  display: flex;
-  flex-direction: row;
-  
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
 `;

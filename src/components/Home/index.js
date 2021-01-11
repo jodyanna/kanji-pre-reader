@@ -1,23 +1,9 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import styled from "styled-components";
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  
-  justify-content: space-evenly;
-  align-items: center;
-  
-  height: 100%;
-`;
+import { Container, List } from "./style";
+import { Button } from "../Shared/style";
 
-const List = styled.ul`
-  list-style-type: none;
-  
-  margin: 0;
-  padding: 0;
-`
 
 export default function Home() {
   const history = useHistory();
@@ -34,7 +20,7 @@ export default function Home() {
         <li>Step 3: Get study sheet(s)!</li>
       </List>
       <p>Get started now!</p>
-      <input onClick={handleClick}
+      <Button onClick={handleClick}
              type="button"
              value="Start"
       />
