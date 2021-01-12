@@ -19,8 +19,10 @@ export const Label = styled.label`
   justify-content: center;
   align-items: center;
   
-  margin: 0.5em;
-  padding: 0.5em;
+  width: 32px;
+  height: 57px;
+  
+  padding: 16px;
   
   outline: 1px solid #000000;
   
@@ -54,6 +56,13 @@ export const Table = styled.table`
 `;
 
 export const TableBody = styled.tbody`
+  display: flex;
+  flex-direction: column;
+  
+  align-items: center;
+  
+  width: 100%;
+
   overflow: scroll;
 `;
 
@@ -65,6 +74,18 @@ export const TableHeader = styled.thead`
   align-items: center;
   
   width: 100%;
+`;
+
+export const TileWrapper = styled.tr`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(64px, max-content));
+  grid-gap: 24px;
+  
+  justify-content: center;
+  
+  padding: 10px;
+  
+  width: 98%;
 `;
 
 export const TableRow = styled.tr`
@@ -97,6 +118,7 @@ export const FlexRow = styled.div`
   justify-content: flex-start;
   align-items: center;
 `;
+
 
 export const FlexCol = styled.div`
   display: flex;

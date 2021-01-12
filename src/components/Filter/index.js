@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 // Components
 import { Checkbox } from "./Checkbox";
 // Styled-components
-import { Form, Table, TableBody, TableRow, TableCol, TableHeader, FlexRow } from "./style";
+import {Form, Table, TableBody, TableRow, TableCol, TableHeader, FlexRow, TileWrapper} from "./style";
 import { AppNav, Button } from "../Shared/style";
 
 
@@ -125,7 +125,7 @@ export default function Filter(props) {
         </TableHeader>
 
         <TableBody>
-          <TableRow>
+          <TileWrapper>
             {hasKanji ?
               checkboxes.map(entry => <Checkbox kanji={entry}
                                                 key={`f-${entry.value}`}
@@ -135,7 +135,7 @@ export default function Filter(props) {
               )
               : <td>"No kanji detected."</td>
             }
-          </TableRow>
+          </TileWrapper>
         </TableBody>
       </Table>
 
