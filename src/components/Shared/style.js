@@ -11,6 +11,12 @@ export const Button = styled.input`
   &:hover {
     cursor: pointer;
   }
+  
+  font-size: 1em;
+  font-weight: bold;
+  
+  color: ${props => props.fontColor};
+  background-color: ${props => props.bgColor}
 `;
 
 export const AppNav = styled.div`
