@@ -63,7 +63,8 @@ export const TableBody = styled.tbody`
   
   width: 100%;
 
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
 `;
 
 export const TableHeader = styled.thead`
