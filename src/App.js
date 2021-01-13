@@ -9,7 +9,6 @@ import Header from "./components/Header";
 import TextareaForm from "./components/TextareaForm";
 import Footer from "./components/Footer";
 import styled from "styled-components";
-import StudySheet from "./components/StudySheet";
 import Filter from "./components/Filter";
 import Home from "./components/Home";
 import Result from "./components/Result";
@@ -61,7 +60,6 @@ export default function App() {
             <TextareaForm text={text}
                           setText={text => setText(text)}
                           setAllKanji={kanji => setAllKanji(kanji)}
-                          resetApp={resetApp}
             />
           </Route>
           <Route path="/">

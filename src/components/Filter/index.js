@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 // Components
 import { Checkbox } from "./Checkbox";
 // Styled-components
-import { Form, Table, TableBody, TableRow, TableCol, TableHeader, FlexRow, TileWrapper } from "./style";
+import {Form, Table, TableBody, TableRow, TableCol, TableHeader, FlexRow, TileWrapper, FlexCol} from "./style";
 import { AppNav, Button } from "../Shared/style";
 // Misc.
 import { colors } from "../Shared/colorScheme";
@@ -140,15 +140,15 @@ export default function Filter(props) {
           </TableBody>
         </Table>
         :
-        "No kanji detected."
+        <FlexCol>
+          <div>"No kanji detected."</div>
+          <Button type="button"
+                  value="Start Over"
+                  onClick={handleStartOverClick}
+          />
+        </FlexCol>
       }
-
-
       <AppNav>
-        <Button type="button"
-                value="Start Over"
-                onClick={handleStartOverClick}
-        />
         <Button type="button"
                 value="Back"
                 onClick={() => history.push("/step-1")}

@@ -6,7 +6,7 @@ export const Form = styled.form`
   flex-direction: column;
   
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: center;
   
   width: 100%;
   height: 80%;
@@ -125,6 +125,9 @@ export const FlexCol = styled.div`
   display: flex;
   flex-direction: column;
   
-  justify-content: flex-start;
+  justify-content: space-evenly;
   align-items: center;
+  
+  width: 100%;
+  height: 100%;
 `;

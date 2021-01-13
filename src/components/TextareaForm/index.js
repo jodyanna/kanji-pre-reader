@@ -19,11 +19,6 @@ export default function TextareaForm(props) {
     history.push("/step-2");
   }
 
-  const handleStartOverClick = () => {
-    props.resetApp();
-    history.push("/");
-  }
-
   return (
     <Form onSubmit={handleSubmit}>
       <Textarea onChange={handleChange}
@@ -32,10 +27,6 @@ export default function TextareaForm(props) {
                 rows={30}
       />
       <AppNav>
-        <Button type="button"
-               value="Start Over"
-               onClick={handleStartOverClick}
-        />
         <Button type="button"
                value="Back"
                onClick={() => history.push("/")}

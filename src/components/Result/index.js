@@ -7,6 +7,9 @@ import StudySheet from "../StudySheet";
 import { downloadPDF } from "../../utils/downloadPDF";
 import { groupKanjiToStudySheets } from "../../utils/groupKanjiToStudySheets";
 import { fetchAllKanjiData } from "../../utils/fetchAllKanjiData";
+// Styled-components
+import { Container } from "./style";
+import { Button } from "../Shared/style";
 
 
 export default function Result(props) {
@@ -25,24 +28,24 @@ export default function Result(props) {
   }
 
   return (
-    <div>
-      <input type="button"
-             value="Start Over"
-             onClick={handleStartOverClick}
-      />
+    <Container>
       {isLoading ?
         "Fetching data..."
-        : <input type="button"
+        : <Button type="button"
                  value="Download PDF"
                  onClick={() => downloadPDF(groupKanjiToStudySheets(kanjiData).length)}
         />
       }
+      <Button type="button"
+             value="Start Over"
+             onClick={handleStartOverClick}
+      />
       {isLoading ?
         ""
         : <StudySheet isLoading={isLoading}
                       kanjiData={kanjiData}
         />
       }
-    </div>
+    </Container>
   )
 }
