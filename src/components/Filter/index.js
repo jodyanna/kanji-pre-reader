@@ -6,6 +6,8 @@ import { Checkbox } from "./Checkbox";
 // Styled-components
 import { Form, Table, TableBody, TableRow, TableCol, TableHeader, FlexRow, TileWrapper } from "./style";
 import { AppNav, Button } from "../Shared/style";
+// Misc.
+import { colors } from "../Shared/colorScheme";
 
 
 export default function Filter(props) {
@@ -89,55 +91,58 @@ export default function Filter(props) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Table>
+      {hasKanji ?
+        <Table>
 
-        <TableHeader>
-          <TableRow center={true}>
-            <th>Select the Kanji you do not know.</th>
-          </TableRow>
-          <TableRow center={true}>
-            <td>These are the kanji that will appear on the study sheet.</td>
-          </TableRow>
+          <TableHeader>
+            <TableRow center={true}>
+              <th>Select the Kanji you do not know.</th>
+            </TableRow>
+            <TableRow center={true}>
+              <td>These are the kanji that will appear on the study sheet.</td>
+            </TableRow>
 
-          <TableRow>
-            <TableCol>
-              <div>
-                Kanji Count: {checkboxes.filter(checkbox => checkbox.isChecked).length} / {props.allKanji.length}
-              </div>
-              <div>
-                Page Count: {renderPageCount()}
-              </div>
-            </TableCol>
+            <TableRow>
+              <TableCol>
+                <div>
+                  Kanji Count: {checkboxes.filter(checkbox => checkbox.isChecked).length} / {props.allKanji.length}
+                </div>
+                <div>
+                  Page Count: {renderPageCount()}
+                </div>
+              </TableCol>
 
-            <TableCol>
-              <FlexRow>
-                <Button type="button"
-                        value="Select All"
-                        onClick={handleCheckAllClick}
-                />
-                <Button type="button"
-                        value="Deselect All"
-                        onClick={handleUncheckAllClick}
-                />
-              </FlexRow>
-            </TableCol>
-          </TableRow>
-        </TableHeader>
+              <TableCol>
+                <FlexRow>
+                  <Button type="button"
+                          value="Select All"
+                          onClick={handleCheckAllClick}
+                          fontColor={colors.white}
+                          bgColor={colors.green}
+                  />
+                  <Button type="button"
+                          value="Deselect All"
+                          onClick={handleUncheckAllClick}
+                  />
+                </FlexRow>
+              </TableCol>
+            </TableRow>
+          </TableHeader>
 
-        <TableBody>
-          <TileWrapper>
-            {hasKanji ?
-              checkboxes.map(entry => <Checkbox kanji={entry}
-                                                key={`f-${entry.value}`}
-                                                value={entry.value}
-                                                handleCheck={handleCheck}
-                />
-              )
-              : <td>"No kanji detected."</td>
-            }
-          </TileWrapper>
-        </TableBody>
-      </Table>
+          <TableBody>
+            <TileWrapper>
+              {checkboxes.map(entry => <Checkbox kanji={entry}
+                                                 key={`f-${entry.value}`}
+                                                 value={entry.value}
+                                                 handleCheck={handleCheck} />
+              )}
+            </TileWrapper>
+          </TableBody>
+        </Table>
+        :
+        "No kanji detected."
+      }
+
 
       <AppNav>
         <Button type="button"
@@ -148,15 +153,10 @@ export default function Filter(props) {
                 value="Back"
                 onClick={() => history.push("/step-1")}
         />
-        {hasKanji
-          ?
-          <Button type="submit"
-                  value="Next"
-                  disabled={validateForm()}
-          />
-          :
-          ""
-        }
+        <Button type="submit"
+                value="Next"
+                disabled={validateForm()}
+        />
       </AppNav>
     </Form>
   )
