@@ -6,7 +6,7 @@ export const Form = styled.form`
   flex-direction: column;
   
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   
   width: 100%;
   height: 80%;
@@ -46,7 +46,7 @@ export const Table = styled.table`
   display: flex;
   flex-direction: column;
   
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
   
   width: 100%;
@@ -71,7 +71,7 @@ export const TableHeader = styled.thead`
   flex-direction: column;
   
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   
   width: 100%;
 `;
@@ -93,7 +93,7 @@ export const TableRow = styled.tr`
   flex-direction: row;
   flex-wrap: wrap;
   
-  justify-content: ${props => props.center ? "center;" : "flex-start;"}
+  justify-content: ${props => props.center ? "center;" : "flex-end;"}
   
   align-items: center;
   
@@ -115,7 +115,7 @@ export const FlexRow = styled.div`
   display: flex;
   flex-direction: row;
   
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
 `;
 

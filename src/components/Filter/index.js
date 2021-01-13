@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 // Components
 import { Checkbox } from "./Checkbox";
 // Styled-components
-import {Form, Table, TableBody, TableRow, TableCol, TableHeader, FlexRow, TileWrapper} from "./style";
+import { Form, Table, TableBody, TableRow, TableCol, TableHeader, FlexRow, TileWrapper } from "./style";
 import { AppNav, Button } from "../Shared/style";
 
 
@@ -101,6 +101,15 @@ export default function Filter(props) {
 
           <TableRow>
             <TableCol>
+              <div>
+                Kanji Count: {checkboxes.filter(checkbox => checkbox.isChecked).length} / {props.allKanji.length}
+              </div>
+              <div>
+                Page Count: {renderPageCount()}
+              </div>
+            </TableCol>
+
+            <TableCol>
               <FlexRow>
                 <Button type="button"
                         value="Select All"
@@ -111,15 +120,6 @@ export default function Filter(props) {
                         onClick={handleUncheckAllClick}
                 />
               </FlexRow>
-            </TableCol>
-
-            <TableCol pushRight={true} >
-              <div>
-                Kanji Count: {checkboxes.filter(checkbox => checkbox.isChecked).length} / {props.allKanji.length}
-              </div>
-              <div>
-                Page Count: {renderPageCount()}
-              </div>
             </TableCol>
           </TableRow>
         </TableHeader>

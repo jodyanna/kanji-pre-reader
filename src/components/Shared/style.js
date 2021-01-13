@@ -17,7 +17,7 @@ export const AppNav = styled.div`
   display: flex;
   flex-direction: row;
   
-  justify-content: flex-start;
+  justify-content: flex-end;
   align-items: center;
   
   width: 100%;
