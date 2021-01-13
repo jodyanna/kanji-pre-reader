@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { Form, Textarea } from "./style";
 import { AppNav, Button } from "../Shared/style";
 // Utility Functions
-import { parseKanjiFromText } from "./parseKanjiFromText";
+import { parseKanjiFromText } from "../../utils/parseKanjiFromText";
 
 
 export default function TextareaForm(props) {

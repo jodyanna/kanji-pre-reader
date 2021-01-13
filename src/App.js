@@ -12,6 +12,7 @@ import styled from "styled-components";
 import StudySheet from "./components/StudySheet";
 import Filter from "./components/Filter";
 import Home from "./components/Home";
+import Result from "./components/Result";
 
 const Page = styled.div`
   display: flex;
@@ -46,8 +47,8 @@ export default function App() {
         <Header />
         <Switch>
           <Route path="/step-3">
-            <StudySheet filterKanji={filterKanji}
-                        resetApp={resetApp}
+            <Result filterKanji={filterKanji}
+                    resetApp={resetApp}
             />
           </Route>
           <Route path="/step-2">
