@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "./colorScheme";
+import {colors} from "./colorScheme";
 
 export const Button = styled.input`
   width: 150px;
@@ -25,17 +25,4 @@ export const Button = styled.input`
   
   color: ${colors.white};
   background-color: ${colors.lightpink};
-`;
-
-export const AppNav = styled.div`
-  display: flex;
-  flex-direction: row;
-  
-  justify-content: center;
-  align-items: center;
-  
-  width: 100%;
-  height: 15%;
-  
-  margin-top: auto;
 `;

@@ -3,7 +3,8 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 // Styled-components
 import { Form, Textarea } from "./style";
-import { AppNav, Button } from "../Shared/style";
+import { AppNav } from "../Shared/AppNav";
+import { Button } from "../Shared/Button";
 // Utility Functions
 import { parseKanjiFromText } from "../../utils/parseKanjiFromText";
 

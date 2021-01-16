@@ -2,7 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 import { Container, List } from "./style";
-import { Button } from "../Shared/style";
+import { Button } from "../Shared/Button";
 
 
 export default function Home() {

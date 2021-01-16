@@ -9,7 +9,7 @@ import { groupKanjiToStudySheets } from "../../utils/groupKanjiToStudySheets";
 import { fetchAllKanjiData } from "../../utils/fetchAllKanjiData";
 // Styled-components
 import { Container } from "./style";
-import { Button } from "../Shared/style";
+import { Button } from "../Shared/Button";
 
 
 export default function Result(props) {

@@ -5,9 +5,8 @@ import { useHistory } from "react-router-dom";
 import { Checkbox } from "./Checkbox";
 // Styled-components
 import {Form, Table, TableBody, TableRow, TableCol, TableHeader, FlexRow, TileWrapper, FlexCol} from "./style";
-import { AppNav, Button } from "../Shared/style";
-// Misc.
-import { colors } from "../Shared/colorScheme";
+import { AppNav } from "../Shared/AppNav";
+import { Button } from "../Shared/Button";
 
 
 export default function Filter(props) {
@@ -117,8 +116,6 @@ export default function Filter(props) {
                   <Button type="button"
                           value="Select All"
                           onClick={handleCheckAllClick}
-                          fontColor={colors.white}
-                          bgColor={colors.green}
                   />
                   <Button type="button"
                           value="Deselect All"
