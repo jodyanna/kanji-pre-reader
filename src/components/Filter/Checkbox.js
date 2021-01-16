@@ -4,7 +4,7 @@ import { Box, Label } from "./style";
 export  function Checkbox(props) {
   return (
     <td>
-      <Label>
+      <Label isChecked={props.kanji.isChecked}>
         {props.kanji.value}
         <Box type="checkbox"
              value={props.kanji.value}

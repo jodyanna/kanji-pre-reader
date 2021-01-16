@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../Shared/colorScheme";
 
 /* FORM COMPONENTS */
 export const Form = styled.form`
@@ -25,6 +26,8 @@ export const Label = styled.label`
   padding: 16px;
   
   outline: 1px solid #000000;
+  
+  background-color: ${props => props.isChecked ? colors.lightgreen : colors.white};
   
   font-size: 2em;
 
