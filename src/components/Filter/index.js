@@ -141,7 +141,7 @@ export default function Filter(props) {
         </Table>
         :
         <FlexCol>
-          <div>"No kanji detected."</div>
+          <div>No kanji detected.</div>
           <Button type="button"
                   value="Start Over"
                   onClick={handleStartOverClick}

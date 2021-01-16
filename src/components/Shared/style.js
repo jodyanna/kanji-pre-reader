@@ -1,22 +1,30 @@
 import styled from "styled-components";
+import { colors } from "./colorScheme";
 
 export const Button = styled.input`
   width: 150px;
-  height: 75px;
+  height: 50px;
   
   margin: 1em;
   
+  border-color: ${colors.pink};
+  border-width: 2px;
   border-radius: 4px;
   
   &:hover {
     cursor: pointer;
   }
   
-  font-size: 1em;
+  &:disabled {
+    background-color: ${colors.grey};
+    border-color: ${colors.grey};
+  }
+  
+  font-size: 1.2em;
   font-weight: bold;
   
-  color: ${props => props.fontColor};
-  background-color: ${props => props.bgColor}
+  color: ${colors.white};
+  background-color: ${colors.lightpink};
 `;
 
 export const AppNav = styled.div`
@@ -27,6 +35,7 @@ export const AppNav = styled.div`
   align-items: center;
   
   width: 100%;
+  height: 15%;
   
   margin-top: auto;
 `;

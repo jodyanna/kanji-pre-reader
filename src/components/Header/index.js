@@ -5,7 +5,7 @@ export default function Header() {
 
   return (
     <Container>
-      <H1>Kanji Pre-Reader v1.0</H1>
+      <H1>Kanji Pre-Reader</H1>
     </Container>
   )
 }

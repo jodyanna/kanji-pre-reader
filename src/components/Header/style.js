@@ -1,16 +1,20 @@
 import styled from "styled-components";
+import { colors } from "../Shared/colorScheme";
 
 export const Container = styled.header`
   display: flex;
   flex-direction: row;
   
-  justify-content: flex-start;
-  align-items: baseline;
+  justify-content: center;
+  align-items: center;
   
   width: 100%;
   height: 10%;
+  
+  color: ${colors.white};
+  background-color: ${colors.lightpink};
 `;
 
 export const H1 = styled.h1`
-  margin: 0.5em 0 0 0;
+  text-align: center;
 `

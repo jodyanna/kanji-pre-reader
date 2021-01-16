@@ -5,7 +5,7 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   
   width: 100%;
@@ -108,7 +108,6 @@ export const TableCol = styled.td`
   justify-content: center;
   align-items: flex-start;
   
-  ${props => props.pushRight ? "margin: 0 0.5em 0 auto;" : ""}
 `;
 
 /* MISC */
