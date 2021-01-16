@@ -5,7 +5,7 @@ export default function Footer() {
 
   return (
     <Container>
-      This is a footer.
+      <span>This app uses <a href="https://kanjiapi.dev/">kanjiapi.dev</a></span>
     </Container>
   )
 }
