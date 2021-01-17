@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 // Components
 import { Checkbox } from "./Checkbox";
+import Loading from "../Loading";
 // Styled-components
 import {Form, Table, TableBody, TableRow, TableCol, TableHeader, FlexRow, TileWrapper, FlexCol} from "./style";
 import { AppNav } from "../Shared/AppNav";
@@ -10,7 +11,7 @@ import { Button } from "../Shared/Button";
 
 
 export default function Filter(props) {
-  const [ hasKanji, setHasKanji ] = useState(false);
+  const [ hasKanji, setHasKanji ] = useState(null);
   const [ checkboxes, setCheckboxes ] = useState([{},]);
   const history = useHistory();
 
@@ -19,7 +20,6 @@ export default function Filter(props) {
     if (props.allKanji === undefined || props.allKanji.length === 0) setHasKanji(false)
     // We have the kanji, set state
     else {
-      setHasKanji(true);
       setCheckboxes(
         props.allKanji.map(entry => {
           return {
@@ -28,6 +28,7 @@ export default function Filter(props) {
           }
         })
       );
+      setHasKanji(true);
     }
   }, [props.allKanji])
 
@@ -90,60 +91,58 @@ export default function Filter(props) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      {hasKanji ?
-        <Table>
-
-          <TableHeader>
-            <TableRow center={true}>
-              <th>Select the Kanji you do not know.</th>
-            </TableRow>
-            <TableRow center={true}>
-              <td>These are the kanji that will appear on the study sheet.</td>
-            </TableRow>
-
-            <TableRow>
-              <TableCol>
-                <div>
-                  Kanji Count: {checkboxes.filter(checkbox => checkbox.isChecked).length} / {props.allKanji.length}
-                </div>
-                <div>
-                  Page Count: {renderPageCount()}
-                </div>
-              </TableCol>
-
-              <TableCol>
-                <FlexRow>
-                  <Button type="button"
-                          value="Select All"
-                          onClick={handleCheckAllClick}
-                  />
-                  <Button type="button"
-                          value="Deselect All"
-                          onClick={handleUncheckAllClick}
-                  />
-                </FlexRow>
-              </TableCol>
-            </TableRow>
-          </TableHeader>
-
-          <TableBody>
-            <TileWrapper>
-              {checkboxes.map(entry => <Checkbox kanji={entry}
-                                                 key={`f-${entry.value}`}
-                                                 value={entry.value}
-                                                 handleCheck={handleCheck} />
-              )}
-            </TileWrapper>
-          </TableBody>
-        </Table>
+      {hasKanji === null ?
+          <Loading />
         :
-        <FlexCol>
-          <div>No kanji detected.</div>
-          <Button type="button"
-                  value="Start Over"
-                  onClick={handleStartOverClick}
-          />
-        </FlexCol>
+          hasKanji ?
+            <Table>
+              <TableHeader>
+                <TableRow center={true}>
+                  <th>Select the Kanji you would like to study.</th>
+                </TableRow>
+                <TableRow center={true}>
+                  <TableCol>
+                    <div>
+                      Kanji count: {checkboxes.filter(checkbox => checkbox.isChecked).length} / {props.allKanji.length}
+                    </div>
+                    <div>
+                      Page count: {renderPageCount()}
+                    </div>
+                  </TableCol>
+                </TableRow>
+                <TableRow>
+                  <TableCol>
+                    <FlexRow>
+                      <Button type="button"
+                              value="Select All"
+                              onClick={handleCheckAllClick}
+                      />
+                      <Button type="button"
+                              value="Deselect All"
+                              onClick={handleUncheckAllClick}
+                      />
+                    </FlexRow>
+                  </TableCol>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TileWrapper>
+                  {checkboxes.map(entry => <Checkbox kanji={entry}
+                                                     key={`f-${entry.value}`}
+                                                     value={entry.value}
+                                                     handleCheck={handleCheck} />
+                  )}
+                </TileWrapper>
+              </TableBody>
+            </Table>
+          :
+            <FlexCol>
+              <div>No kanji detected.</div>
+              <Button type="button"
+                      value="Start Over"
+                      onClick={handleStartOverClick}
+              />
+            </FlexCol>
       }
       <AppNav>
         <Button type="button"
