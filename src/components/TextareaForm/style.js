@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { colors } from "../Shared/colorScheme";
 
+export const H2 = styled.h2`
+  margin-bottom: 0;
+`;
+
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
