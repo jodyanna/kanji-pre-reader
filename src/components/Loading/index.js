@@ -1,6 +1,21 @@
 import React from "react";
+import styled from "styled-components";
 import loadingGIF from "../../img/loading.gif";
 
-export default function Loading() {
-  return <img src={loadingGIF} alt="loading..." />
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: center;
+  align-items: center;
+`;
+
+export default function Loading(props) {
+  return (
+    <Container>
+      <p>{props.message}</p>
+      <img src={loadingGIF} alt="loading..." />
+    </Container>
+
+  )
 }

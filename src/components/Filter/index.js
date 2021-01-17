@@ -92,7 +92,7 @@ export default function Filter(props) {
   return (
     <Form onSubmit={handleSubmit}>
       {hasKanji === null ?
-          <Loading />
+          <Loading message={"Loading..."} />
         :
           hasKanji ?
             <Table>
