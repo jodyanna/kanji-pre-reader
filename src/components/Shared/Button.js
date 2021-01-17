@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {colors} from "./colorScheme";
+import { colors } from "./colorScheme";
 
 export const Button = styled.input`
   width: 150px;

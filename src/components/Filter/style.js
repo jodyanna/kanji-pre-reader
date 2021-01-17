@@ -89,7 +89,7 @@ export const TileWrapper = styled.tr`
   
   padding: 10px;
   
-  width: 98%;
+  width: 95%;
 `;
 
 export const TableRow = styled.tr`
@@ -102,6 +102,8 @@ export const TableRow = styled.tr`
   align-items: center;
   
   width: 100%;
+  
+  margin: 0.2em 0 0 0;
 `;
 
 export const TableCol = styled.td`
@@ -121,7 +123,6 @@ export const FlexRow = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
 
 export const FlexCol = styled.div`
   display: flex;

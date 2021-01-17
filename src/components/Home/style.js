@@ -4,12 +4,25 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   
+  justify-content: flex-start;
+  align-items: center;
+  
+  width: 100%;
+  height: 90%;
+  
+  overflow-y: scroll;
+`;
+
+export const Section = styled.section`
+  display: flex;
+  flex-direction: column;
+  
   justify-content: space-evenly;
   align-items: center;
   
   width: 100%;
-  height: 80%;
-`;
+  height: 90%;
+`
 
 export const List = styled.ul`
   list-style-type: none;
@@ -17,3 +30,7 @@ export const List = styled.ul`
   margin: 0;
   padding: 0;
 `
+
+export const Text = styled.p`
+  text-align: center;
+`;
