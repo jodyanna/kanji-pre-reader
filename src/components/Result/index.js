@@ -9,7 +9,7 @@ import { downloadPDF } from "../../utils/downloadPDF";
 import { groupKanjiToStudySheets } from "../../utils/groupKanjiToStudySheets";
 import { fetchAllKanjiData } from "../../utils/fetchAllKanjiData";
 // Styled-components
-import { Container } from "./style";
+import { Container, Downloader } from "./style";
 import { Button } from "../Shared/Button";
 import { AppNav } from "../Shared/AppNav";
 
@@ -41,7 +41,7 @@ export default function Result(props) {
       {isFetching ?
         <Loading message={"Fetching kanji data..."} />
         :
-        <Container style={{margin:"auto 0 0 0"}}>
+        <Downloader>
           <Button type="button"
                   value="Download PDF"
                   onClick={handleDownloadClick}
@@ -52,7 +52,7 @@ export default function Result(props) {
             :
             ""
           }
-        </Container>
+        </Downloader>
       }
       <AppNav>
         <Button type="button"

@@ -5,7 +5,7 @@ export const Button = styled.input`
   width: 150px;
   height: 50px;
   
-  margin: 1em;
+  margin: 0.5em;
   
   border-color: ${colors.pink};
   border-width: 2px;
