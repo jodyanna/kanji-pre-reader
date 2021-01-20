@@ -1,8 +1,9 @@
 // Dependencies
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 // Components
 import StudySheet from "../StudySheet";
+import Loading from "../Loading";
 // Utility Functions
 import { downloadPDF } from "../../utils/downloadPDF";
 import { groupKanjiToStudySheets } from "../../utils/groupKanjiToStudySheets";
@@ -10,39 +11,57 @@ import { fetchAllKanjiData } from "../../utils/fetchAllKanjiData";
 // Styled-components
 import { Container } from "./style";
 import { Button } from "../Shared/Button";
+import { AppNav } from "../Shared/AppNav";
 
 
 export default function Result(props) {
   const [ kanjiData, setKanjiData ] = useState([]);
-  const [ isLoading, setIsLoading ] = useState(true);
+  const [ isFetching, setIsFetching ] = useState(true);
+  const [ isDownloading, setIsDownloading ] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
     fetchAllKanjiData(props.filterKanji).then(res => setKanjiData(res))
-      .then(() => setIsLoading(false))
-  }, [props.filterKanji])
+      .then(() => setIsFetching(false))
+  }, [props.filterKanji]);
 
   const handleStartOverClick = () => {
     props.resetApp();
     history.push("/");
   }
 
+  const handleDownloadClick = () => {
+    setIsDownloading(prevState => !prevState);
+    downloadPDF(groupKanjiToStudySheets(kanjiData).length)
+      .then(() => setIsDownloading(prevState => !prevState));
+  }
+
   return (
     <Container>
-      {isLoading ?
-        "Fetching data..."
-        : <Button type="button"
-                 value="Download PDF"
-                 onClick={() => downloadPDF(groupKanjiToStudySheets(kanjiData).length)}
-        />
+      {isFetching ?
+        <Loading message={"Fetching kanji data..."} />
+        :
+        <Container style={{margin:"auto 0 0 0"}}>
+          <Button type="button"
+                  value="Download PDF"
+                  onClick={handleDownloadClick}
+          />
+          {isDownloading ?
+            <Loading message={"Rendering study sheet(s) for downloading..."} />
+            :
+            ""
+          }
+        </Container>
       }
-      <Button type="button"
-             value="Start Over"
-             onClick={handleStartOverClick}
-      />
-      {isLoading ?
+      <AppNav>
+        <Button type="button"
+                value="Start Over"
+                onClick={handleStartOverClick}
+        />
+      </AppNav>
+      {isFetching ?
         ""
-        : <StudySheet isLoading={isLoading}
+        : <StudySheet isLoading={isFetching}
                       kanjiData={kanjiData}
         />
       }
