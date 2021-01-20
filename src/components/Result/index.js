@@ -45,6 +45,7 @@ export default function Result(props) {
           <Button type="button"
                   value="Download PDF"
                   onClick={handleDownloadClick}
+                  disabled={isDownloading}
           />
           {isDownloading ?
             <Loading message={"Rendering study sheet(s) for downloading..."} />
