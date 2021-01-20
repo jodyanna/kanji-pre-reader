@@ -111,14 +111,18 @@ export default function Filter(props) {
                   </TableCol>
                 </TableRow>
                 <TableRow center={true}>
-                  <Button type="button"
-                          value="Select All"
-                          onClick={handleCheckAllClick}
-                  />
-                  <Button type="button"
-                          value="Deselect All"
-                          onClick={handleUncheckAllClick}
-                  />
+                  <TableCol>
+                    <FlexRow>
+                      <Button type="button"
+                              value="Select All"
+                              onClick={handleCheckAllClick}
+                      />
+                      <Button type="button"
+                              value="Deselect All"
+                              onClick={handleUncheckAllClick}
+                      />
+                    </FlexRow>
+                  </TableCol>
                 </TableRow>
               </TableHeader>
               <TableBody>
