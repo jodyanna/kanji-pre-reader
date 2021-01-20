@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 // Components
 import StudySheet from "../StudySheet";
+import Preview from "./Preview";
 import Loading from "../Loading";
 // Utility Functions
 import { downloadPDF } from "../../utils/downloadPDF";
@@ -39,9 +40,17 @@ export default function Result(props) {
   return (
     <Container>
       {isFetching ?
+        ""
+        :
+        <StudySheet isLoading={isFetching}
+                    kanjiData={kanjiData}
+        />
+      }
+      {isFetching ?
         <Loading message={"Fetching kanji data..."} />
         :
         <Downloader>
+          <Preview />
           <Button type="button"
                   value="Download PDF"
                   onClick={handleDownloadClick}
@@ -60,12 +69,6 @@ export default function Result(props) {
                 onClick={handleStartOverClick}
         />
       </AppNav>
-      {isFetching ?
-        ""
-        : <StudySheet isLoading={isFetching}
-                      kanjiData={kanjiData}
-        />
-      }
     </Container>
   )
 }
