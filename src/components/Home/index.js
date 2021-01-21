@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 
 import { Container, Section, List, Text } from "./style";
 import { Button } from "../Shared/Button";
+import { Icon } from "../Shared/Icon";
+import githubIcon from "../../img/github.svg"
 
 
 export default function Home() {
@@ -26,6 +28,7 @@ export default function Home() {
                 type="button"
                 value="Start"
         />
+        <a href="https://github.com/jodyanna/kanji-pre-reader"><Icon src={githubIcon} alt="github.svg" /></a>
       </Section>
     </Container>
   )

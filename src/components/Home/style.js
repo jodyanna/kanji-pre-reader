@@ -24,7 +24,7 @@ export const Section = styled.section`
   align-items: center;
   
   width: 100%;
-  height: 90%;
+  height: 100%;
 `
 
 export const List = styled.ul`
