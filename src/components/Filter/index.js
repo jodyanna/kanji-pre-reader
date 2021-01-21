@@ -106,7 +106,7 @@ export default function Filter(props) {
                       Kanji count: {checkboxes.filter(checkbox => checkbox.isChecked).length} / {props.allKanji.length}
                     </div>
                     <div>
-                      Page count: {renderPageCount()}
+                      Page count: {renderPageCount()} (Limit 2)
                     </div>
                   </TableCol>
                 </TableRow>
