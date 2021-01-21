@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fadeInRule } from "../Shared/Animation";
 
 export const Container = styled.div`
   display: flex;
@@ -9,6 +10,8 @@ export const Container = styled.div`
   
   width: 100%;
   height: 80%;
+  
+  animation: ${fadeInRule};
 `;
 
 export const Downloader = styled.div`

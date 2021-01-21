@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fadeInRule } from "../Shared/Animation";
 import { colors } from "../Shared/colorScheme";
 
 /* FORM COMPONENTS */
@@ -11,6 +12,8 @@ export const Form = styled.form`
   
   width: 100%;
   height: 80%;
+  
+  animation: ${fadeInRule};
 `;
 
 export const Label = styled.label`

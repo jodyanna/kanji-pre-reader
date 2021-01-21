@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { fadeInRule } from "../Shared/Animation";
 
 export const Container = styled.div`
   display: flex;
@@ -11,6 +12,8 @@ export const Container = styled.div`
   height: 90%;
   
   overflow-y: scroll;
+  
+  animation: ${fadeInRule};
 `;
 
 export const Section = styled.section`
