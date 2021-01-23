@@ -22,9 +22,13 @@ export default function Result(props) {
   const history = useHistory();
 
   useEffect(() => {
-    fetchAllKanjiData(props.filterKanji).then(res => setKanjiData(res))
-      .then(() => setIsFetching(false))
-  }, [props.filterKanji]);
+    // Send user back to home page if no kanji present. Prevents break on page refresh!
+    if (props.filterKanji.length === 0) history.replace("/")
+    else {
+      fetchAllKanjiData(props.filterKanji).then(res => setKanjiData(res))
+        .then(() => setIsFetching(false))
+    }
+  }, [props.filterKanji, history]);
 
   const handleStartOverClick = () => {
     props.resetApp();
