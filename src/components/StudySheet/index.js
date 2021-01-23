@@ -13,7 +13,7 @@ export default function StudySheet(props) {
     <div>
       {groupKanjiToStudySheets(props.kanjiData).map((page, i) => {
           return (
-            <Page id={`pdf-${i}`}>
+            <Page id={`pdf-${i}`} key={`pdf-${i}`}>
               <EntryWrapper>
                 {page.map(entry => <StudySheetEntry kanji={entry} key={entry.kanji} />)}
               </EntryWrapper>
