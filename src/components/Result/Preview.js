@@ -19,7 +19,7 @@ const Image = styled.img`
 
 export default function Preview() {
   const [ isLoading, setIsLoading ] = useState(true);
-  const [ img, setImg ] = useState(null);
+  const [ img, setImg ] = useState({});
 
   useEffect(() => {
     renderPreview()

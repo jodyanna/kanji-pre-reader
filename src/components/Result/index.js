@@ -40,16 +40,12 @@ export default function Result(props) {
   return (
     <Container>
       {isFetching ?
-        ""
-        :
-        <StudySheet isLoading={isFetching}
-                    kanjiData={kanjiData}
-        />
-      }
-      {isFetching ?
         <Loading message={"Fetching kanji data..."} />
         :
         <Downloader>
+          <StudySheet isLoading={isFetching}
+                      kanjiData={kanjiData}
+          />
           <Preview />
           <Button type="button"
                   value="Download PDF"

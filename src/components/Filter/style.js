@@ -68,6 +68,7 @@ export const TableBody = styled.tbody`
   align-items: center;
   
   width: 100%;
+  height: 80%;
 
   overflow-y: scroll;
   overflow-x: hidden;
@@ -91,8 +92,9 @@ export const TileWrapper = styled.tr`
   justify-content: center;
   
   padding: 10px;
-  
+
   width: 95%;
+  height: 100%;
 `;
 
 export const TableRow = styled.tr`
