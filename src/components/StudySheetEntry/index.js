@@ -11,12 +11,11 @@ export default function StudySheetEntry(props) {
     })
   }
 
-  const sortKunReadings = readings => {
-    const temp = [];
-    for (let i = 0; i < readings.length; i++) {
-      temp.push(readings[i].split('.')[0])
-    }
-    return [...new Set(temp)]
+  const formatKunReadings = readings => {
+    return readings.map(kun => {
+      if (kun.includes(".")) return `${kun.split(".")[0]}(${kun.split(".")[1]})`
+      else return kun
+    })
   }
 
   return (
@@ -31,9 +30,9 @@ export default function StudySheetEntry(props) {
       </KanjiOverview>
       <Col>
         <Summary>
-          <Info>Kun-Reading: {renderListWithCommas(sortKunReadings(props.kanji.kun_readings))}</Info>
+          <Info>Kun-Reading: {renderListWithCommas(formatKunReadings(props.kanji.kun_readings))}</Info>
           <Info>On-Reading: {renderListWithCommas(props.kanji.on_readings)}</Info>
-          <Info>Meaning(s): {renderListWithCommas(props.kanji.meanings)}</Info>
+          <Info>Meaning: {renderListWithCommas(props.kanji.meanings)}</Info>
         </Summary>
         <PracticeArea />
       </Col>
