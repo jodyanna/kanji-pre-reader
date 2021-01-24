@@ -49,26 +49,24 @@ export default function App() {
             <Result filterKanji={filterKanji}
                     resetApp={resetApp}
             />
-            <Footer />
           </Route>
           <Route path="/step-2">
             <Filter allKanji={allKanji}
                     setFilterKanji={kanji => setFilterKanji(kanji)}
                     resetApp={resetApp}
             />
-            <Footer />
           </Route>
           <Route path="/step-1">
             <TextareaForm text={text}
                           setText={text => setText(text)}
                           setAllKanji={kanji => setAllKanji(kanji)}
             />
-            <Footer />
           </Route>
           <Route path="/">
             <Home />
           </Route>
         </Switch>
+        <Footer />
       </Page>
     </Router>
   );
