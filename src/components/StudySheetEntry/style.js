@@ -5,21 +5,24 @@ export const Container = styled.div`
   flex-direction: row;
   
   width: 100%;
-  height: 360px;
+  height: 180px;
   
-  margin: 40px 0;
+  margin: 20px 0;
   
-  border: 1px solid #000000;
+  border: 0.5px solid #000000;
 `;
 
 export const Summary = styled.div`
   display: flex;
   flex-direction: column;
   
+  justify-content: space-evenly;
+  align-items: flex-start;
+  
   width: 100%;
   height: 40%;
   
-  border: 1px solid #000000;
+  border: 0.5px solid #000000;
 `;
 
 export const Col = styled.div`
@@ -50,7 +53,7 @@ export const KanjiOverview = styled.div`
   
   text-align: baseline;
   
-  border: 1px solid #000000;
+  border: 0.5px solid #000000;
 `;
 
 // Text styles
@@ -63,14 +66,14 @@ export const Kanji = styled.div`
   width: 100%;
   height: 80%;
 
-  font-size: 10em;
+  font-size: 5em;
 `;
 
 export const Info = styled.p`
-  margin: 0 1em 0 0;
-  padding-left: 0.5em;
+  margin: 0 0.5em 0 0;
+  padding-left: 0.25em;
   
-  font-size: 2em;
+  font-size: 1em;
 `;
 
 export const SmCenterText = styled.div`
@@ -79,5 +82,5 @@ export const SmCenterText = styled.div`
   justify-content: center;
   align-items: center;
   
-  font-size: 2em;
+  font-size: 1em;
 `;

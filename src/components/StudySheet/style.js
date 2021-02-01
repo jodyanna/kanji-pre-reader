@@ -18,8 +18,8 @@ export const Page = styled.div`
   z-index: -1;
   transform: translateY(-150%);
   
-  width: 2550px;
-  height: 3300px;
+  width: 1275px;
+  height: 1650px;
 `;
 
 /*
@@ -28,6 +28,6 @@ export const Page = styled.div`
   Height is 50px smaller than Page.
  */
 export const EntryWrapper = styled.div`
-  width: 2500px;
-  height: 3250px;
+  width: 1250px;
+  height: 1625px;
 `;

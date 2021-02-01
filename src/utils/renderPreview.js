@@ -3,8 +3,8 @@ import html2canvas from "html2canvas";
 export const renderPreview = async () => {
   const firstStudySheetID = "#pdf-0";
   const canvas = await html2canvas(document.querySelector(firstStudySheetID), {
-    width: 2550,
-    height: 3300
+    width: 1275,
+    height: 1650
   })
   const img = {};
   img.src = canvas.toDataURL("image/png");
