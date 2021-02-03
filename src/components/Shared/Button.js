@@ -2,6 +2,11 @@ import styled from "styled-components";
 import { colors } from "./colorScheme";
 
 export const Button = styled.input`
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+
   width: 150px;
   height: 50px;
   
