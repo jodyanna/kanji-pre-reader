@@ -14,12 +14,16 @@ export const downloadPDF = async pages => {
 
   for (let i = 0; i < pages; i++) {
     // Select current study sheet component
-    const canvas = await html2canvas(document.querySelector(`#pdf-${i}`))
+    const canvas = await html2canvas(document.querySelector(`#pdf-${i}`));
+
     // Insert new page after default page
     if (i !== 0) pdf.insertPage(i);
+
+    // Create image data and add to pdf document
     const imgData = canvas.toDataURL('image/png');
     pdf.addImage(imgData, 'JPEG', 0, 0, 2550, 3300, `page-${i}`, "SLOW");
+
     // Download only on last iteration
-    if (i === pages - 1) pdf.save("download.pdf")
+    if (i === pages - 1) pdf.save("download.pdf");
   }
 }
