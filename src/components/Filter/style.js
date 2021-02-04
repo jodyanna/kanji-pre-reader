@@ -20,7 +20,7 @@ export const Label = styled.label`
   display: flex;
   flex-direction: column;
   
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   
   width: 32px;
@@ -32,6 +32,7 @@ export const Label = styled.label`
   
   background-color: ${props => props.isChecked ? colors.lightgreen : colors.white};
   
+  text-align: center;
   font-size: 2em;
 
   box-shadow: 5px 5px 8px -4px rgba(0,0,0,0.7);
@@ -42,6 +43,14 @@ export const Label = styled.label`
 `;
 
 export const Box = styled.input`
+  display: flex;
+  flex-direction: column;
+  
+  justify-content: center;
+  align-items: center;
+  
+  margin: 0;
+
   &:hover {
     cursor: pointer;
   }
