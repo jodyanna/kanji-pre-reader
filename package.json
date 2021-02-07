@@ -39,10 +39,12 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.12.10",
     "@testing-library/dom": "^7.29.0",
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/user-event": "^12.5.0",
     "@types/react": "^17.0.1",
+    "history": "^4.10.1",
     "jest": "^26.6.0"
   }
 }
