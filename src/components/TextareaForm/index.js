@@ -9,24 +9,25 @@ import { Button } from "../Shared/Button";
 import { parseKanjiFromText } from "../../utils/parseKanjiFromText";
 
 
-export default function TextareaForm(props) {
+export default function TextareaForm({text, setText, setAllKanji}) {
   const history = useHistory();
 
-  const handleChange = event => props.setText(event.target.value);
+  const handleChange = event => setText(event.target.value);
 
   const handleSubmit = event => {
     event.preventDefault();
-    props.setAllKanji(parseKanjiFromText(props.text));
+    const parsedKanji = parseKanjiFromText(text);
+    setAllKanji(parsedKanji);
     history.push("/step-2");
   }
 
-  const validateForm = () => !props.text.length > 0
+  const validateForm = () => !text.length > 0
 
   return (
     <Form onSubmit={handleSubmit}>
       <H2>Paste text below</H2>
       <Textarea onChange={handleChange}
-                value={props.text}
+                value={text}
                 cols={40}
                 rows={28}
       />
