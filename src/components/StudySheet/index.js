@@ -8,10 +8,10 @@ import StudySheetEntry from "../StudySheetEntry";
 import { groupKanjiToStudySheets } from "../../utils/groupKanjiToStudySheets";
 
 
-export default function StudySheet(props) {
+export default function StudySheet({ kanjiData }) {
   return (
     <div>
-      {groupKanjiToStudySheets(props.kanjiData).map((page, i) => {
+      {groupKanjiToStudySheets(kanjiData).map((page, i) => {
           return (
             <Page id={`pdf-${i}`} key={`pdf-${i}`}>
               <EntryWrapper>

@@ -1,15 +1,15 @@
 import React from "react";
 import { Box, Label } from "./style";
 
-export function Checkbox(props) {
+export function Checkbox({ kanji, handleCheck }) {
   return (
     <td>
-      <Label isChecked={props.kanji.isChecked}>
-        {props.kanji.value}
+      <Label isChecked={kanji.isChecked}>
+        {kanji.value}
         <Box type="checkbox"
-             value={props.kanji.value}
-             checked={props.kanji.isChecked}
-             onChange={props.handleCheck}
+             value={kanji.value}
+             checked={kanji.isChecked}
+             onChange={handleCheck}
         />
       </Label>
     </td>

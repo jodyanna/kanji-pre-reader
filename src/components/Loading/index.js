@@ -10,10 +10,10 @@ const Container = styled.div`
   align-items: center;
 `;
 
-export default function Loading(props) {
+export default function Loading({ message }) {
   return (
     <Container>
-      <p>{props.message}</p>
+      <p>{message}</p>
       <img src={loadingGIF} alt="loading..." />
     </Container>
 

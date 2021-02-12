@@ -2,7 +2,7 @@ import React from "react";
 import PracticeArea from "../PracticeArea";
 import { Container, KanjiOverview, Kanji, SmCenterText, Summary, Col, KanjiCol, Info } from "./style";
 
-export default function StudySheetEntry(props) {
+export default function StudySheetEntry({ kanji }) {
 
   const renderListWithCommas = readings => {
     return readings.map((kana, i) => {
@@ -22,17 +22,17 @@ export default function StudySheetEntry(props) {
     <Container>
       <KanjiOverview>
         <KanjiCol>
-          <SmCenterText>Grade: {props.kanji.grade}</SmCenterText>
-          <SmCenterText>{props.kanji.jlpt === null ? "" : `JLPT: N${props.kanji.jlpt}`}</SmCenterText>
+          <SmCenterText>Grade: {kanji.grade}</SmCenterText>
+          <SmCenterText>{kanji.jlpt === null ? "" : `JLPT: N${kanji.jlpt}`}</SmCenterText>
         </KanjiCol>
-        <Kanji>{props.kanji.kanji}</Kanji>
-        <SmCenterText>Strokes: {props.kanji.stroke_count}</SmCenterText>
+        <Kanji>{kanji.kanji}</Kanji>
+        <SmCenterText>Strokes: {kanji.stroke_count}</SmCenterText>
       </KanjiOverview>
       <Col>
         <Summary>
-          <Info>Kun-Reading: {renderListWithCommas(formatKunReadings(props.kanji.kun_readings))}</Info>
-          <Info>On-Reading: {renderListWithCommas(props.kanji.on_readings)}</Info>
-          <Info>Meaning: {renderListWithCommas(props.kanji.meanings)}</Info>
+          <Info>Kun-Reading: {renderListWithCommas(formatKunReadings(kanji.kun_readings))}</Info>
+          <Info>On-Reading: {renderListWithCommas(kanji.on_readings)}</Info>
+          <Info>Meaning: {renderListWithCommas(kanji.meanings)}</Info>
         </Summary>
         <PracticeArea />
       </Col>
