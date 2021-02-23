@@ -150,3 +150,7 @@ export const FlexCol = styled.div`
   width: 100%;
   height: 100%;
 `;
+
+export const Text = styled.span`
+  font-size: 30px;
+`;

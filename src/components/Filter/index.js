@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { Checkbox } from "./Checkbox";
 import Loading from "../Loading";
 // Styled-components
-import {Form, Table, TableBody, TableRow, TableCol, TableHeader, FlexRow, TileWrapper, FlexCol} from "./style";
+import {Form, Table, TableBody, TableRow, TableCol, TableHeader, FlexRow, TileWrapper, FlexCol, Text } from "./style";
 import { AppNav } from "../Shared/AppNav";
 import { Button } from "../Shared/Button";
 
@@ -137,7 +137,7 @@ export default function Filter({ allKanji, setFilterKanji, resetApp }) {
             </Table>
           :
             <FlexCol>
-              <div>No kanji detected.</div>
+              <Text>No kanji detected.</Text>
               <Button type="button"
                       value="Start Over"
                       onClick={handleStartOverClick}
