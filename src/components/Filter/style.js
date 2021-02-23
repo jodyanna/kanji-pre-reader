@@ -33,7 +33,7 @@ export const Label = styled.label`
   background-color: ${props => props.isChecked ? colors.lightgreen : colors.white};
   
   text-align: center;
-  font-size: 2em;
+  font-size: 38px;
 
   box-shadow: 5px 5px 8px -4px rgba(0,0,0,0.7);
   
@@ -91,6 +91,8 @@ export const TableHeader = styled.thead`
   align-items: flex-start;
   
   width: 100%;
+  
+  font-size: 20px;
 `;
 
 export const TileWrapper = styled.tr`

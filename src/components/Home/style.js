@@ -14,6 +14,8 @@ export const Container = styled.div`
   overflow-y: scroll;
   
   animation: ${fadeInRule};
+  
+  font-size: 20px;
 `;
 
 export const Section = styled.section`
