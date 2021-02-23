@@ -8,6 +8,8 @@ const Container = styled.div`
   
   justify-content: center;
   align-items: center;
+  
+  font-size: 20px;
 `;
 
 export default function Loading({ message }) {
@@ -16,6 +18,5 @@ export default function Loading({ message }) {
       <p>{message}</p>
       <img src={loadingGIF} alt="loading..." />
     </Container>
-
   )
 }
