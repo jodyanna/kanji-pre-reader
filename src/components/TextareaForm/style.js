@@ -4,6 +4,7 @@ import { colors } from "../Shared/colorScheme";
 
 export const H2 = styled.h2`
   margin-bottom: 0;
+  font-size: 26px;
 `;
 
 export const Form = styled.form`

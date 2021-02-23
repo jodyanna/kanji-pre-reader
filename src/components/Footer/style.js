@@ -9,4 +9,6 @@ export const Container = styled.footer`
   
   width: 100%;
   height: 10%;
+  
+  font-size: 16px;
 `;

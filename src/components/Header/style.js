@@ -17,4 +17,5 @@ export const Container = styled.header`
 
 export const H1 = styled.h1`
   text-align: center;
+  font-size: 32px;
 `

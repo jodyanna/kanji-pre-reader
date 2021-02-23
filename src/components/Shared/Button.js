@@ -7,10 +7,11 @@ export const Button = styled.input`
   justify-content: center;
   align-items: center;
 
-  width: 150px;
+
   height: 50px;
   
-  margin: 0.5em;
+  margin: 10px;
+  padding: 10px 25px;
   
   border-color: ${colors.pink};
   border-width: 2px;
@@ -25,7 +26,7 @@ export const Button = styled.input`
     border-color: ${colors.grey};
   }
   
-  font-size: 1.2em;
+  font-size: 20px;
   font-weight: bold;
   
   color: ${colors.white};
