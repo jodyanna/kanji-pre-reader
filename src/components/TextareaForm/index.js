@@ -9,7 +9,7 @@ import { Button } from "../Shared/Button";
 import { parseKanjiFromText } from "../../utils/parseKanjiFromText";
 
 
-export default function TextareaForm({text, setText, setAllKanji}) {
+export default function TextareaForm({ text, setText, setAllKanji }) {
   const history = useHistory();
 
   const handleChange = event => setText(event.target.value);

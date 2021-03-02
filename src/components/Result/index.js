@@ -15,7 +15,7 @@ import { Button } from "../Shared/Button";
 import { AppNav } from "../Shared/AppNav";
 
 
-export default function Result(props) {
+export default function Result({ filterKanji, resetApp }) {
   const [ kanjiData, setKanjiData ] = useState([]);
   const [ isFetching, setIsFetching ] = useState(true);
   const [ isDownloading, setIsDownloading ] = useState(false);
@@ -23,15 +23,15 @@ export default function Result(props) {
 
   useEffect(() => {
     // Send user back to home page if no kanji present. Prevents break on page refresh!
-    if (props.filterKanji.length === 0) history.replace("/")
+    if (filterKanji.length === 0) history.replace("/")
     else {
-      fetchAllKanjiData(props.filterKanji).then(res => setKanjiData(res))
+      fetchAllKanjiData(filterKanji).then(res => setKanjiData(res))
         .then(() => setIsFetching(false))
     }
-  }, [props.filterKanji, history]);
+  }, [filterKanji, history]);
 
   const handleStartOverClick = () => {
-    props.resetApp();
+    resetApp();
     history.push("/");
   }
 

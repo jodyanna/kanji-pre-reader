@@ -66,14 +66,14 @@ export const Kanji = styled.div`
   width: 100%;
   height: 80%;
 
-  font-size: 5em;
+  font-size: 90px;
 `;
 
 export const Info = styled.p`
   margin: 0 0.5em 0 0;
   padding-left: 0.25em;
   
-  font-size: 1em;
+  font-size: 16px;
 `;
 
 export const SmCenterText = styled.div`
@@ -82,5 +82,5 @@ export const SmCenterText = styled.div`
   justify-content: center;
   align-items: center;
   
-  font-size: 1em;
+  font-size: 16px;
 `;

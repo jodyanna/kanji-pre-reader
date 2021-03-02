@@ -21,7 +21,6 @@ Each study sheet holds a maximum of 8 kanji entries, current limit for download 
 3. View preview of first page and download pdf file. 
 
 ## How it’s made
-### Input Data
 Step 1 contains a simple textarea input form for users to enter the text they would like to process. 
 Clicking next will parse the text using a regular expression into an array containing single kanji characters.
 Duplicate characters are removed by converting the array to a set and back again.
@@ -34,3 +33,14 @@ Step 3 requests the JSON of each kanji selected from the kanjiapi.dev API and gr
 These groups are then used to render the StudySheet components off-screen.
 A preview is rendered on a canvas using the html2canvas library and query selecting the first StudySheet component.
 Clicking download will render each StudySheet component into a PDF document using html2canvas to convert the component into an image, and jsPDF to create the document.
+
+## Installation
+To start, clone this repo from GitHub.
+
+Then, run this command from the root directory to install dependencies:
+```npm install```
+
+To start development server, run: 
+```npm start```
+
+To run tests: ```npm test```

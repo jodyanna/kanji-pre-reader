@@ -5,23 +5,23 @@ import { useHistory } from "react-router-dom";
 import { Checkbox } from "./Checkbox";
 import Loading from "../Loading";
 // Styled-components
-import {Form, Table, TableBody, TableRow, TableCol, TableHeader, FlexRow, TileWrapper, FlexCol} from "./style";
+import {Form, Table, TableBody, TableRow, TableCol, TableHeader, FlexRow, TileWrapper, FlexCol, Text } from "./style";
 import { AppNav } from "../Shared/AppNav";
 import { Button } from "../Shared/Button";
 
 
-export default function Filter(props) {
+export default function Filter({ allKanji, setFilterKanji, resetApp }) {
   const [ hasKanji, setHasKanji ] = useState(null);
   const [ checkboxes, setCheckboxes ] = useState([{},]);
   const history = useHistory();
 
   useEffect(() => {
     // No kanji detected from user textarea input
-    if (props.allKanji === undefined || props.allKanji.length === 0) setHasKanji(false)
+    if (allKanji === undefined || allKanji.length === 0) setHasKanji(false)
     // We have the kanji, set state
     else {
       setCheckboxes(
-        props.allKanji.map(entry => {
+        allKanji.map(entry => {
           return {
             value: entry,
             isChecked: false,
@@ -30,7 +30,7 @@ export default function Filter(props) {
       );
       setHasKanji(true);
     }
-  }, [props.allKanji])
+  }, [allKanji])
 
   const handleCheck = event => {
     for (let i = 0; i < checkboxes.length; i++) {
@@ -60,7 +60,7 @@ export default function Filter(props) {
   const handleSubmit = event => {
     event.preventDefault();
     // Get all checked kanji and set to App state.
-    props.setFilterKanji(checkboxes.map(entry => entry.isChecked ? entry.value : null)
+    setFilterKanji(checkboxes.map(entry => entry.isChecked ? entry.value : null)
       // For eliminating unchecked kanji null values from array.
       .filter(value => value !== null));
     history.push("/step-3");
@@ -74,7 +74,7 @@ export default function Filter(props) {
   }
 
   const handleStartOverClick = () => {
-    props.resetApp();
+    resetApp();
     history.push("/");
   }
 
@@ -103,7 +103,7 @@ export default function Filter(props) {
                 <TableRow center={true}>
                   <TableCol>
                     <div>
-                      Kanji count: {checkboxes.filter(checkbox => checkbox.isChecked).length} / {props.allKanji.length}
+                      Kanji count: {checkboxes.filter(checkbox => checkbox.isChecked).length} / {allKanji.length}
                     </div>
                     <div>
                       Page count: {renderPageCount()} (Limit 2)
@@ -137,7 +137,7 @@ export default function Filter(props) {
             </Table>
           :
             <FlexCol>
-              <div>No kanji detected.</div>
+              <Text>No kanji detected.</Text>
               <Button type="button"
                       value="Start Over"
                       onClick={handleStartOverClick}
