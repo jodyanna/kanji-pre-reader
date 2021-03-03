@@ -30,12 +30,12 @@ const Page = styled.div`
 `;
 
 export default function App() {
-  const [ text, setText ] = useState("");
+  const [ text, setText ] = useState("ここにテキストを貼りつけてください");
   const [ allKanji, setAllKanji ] = useState([]);
   const [ filterKanji, setFilterKanji ] = useState([]);
 
   const resetApp = () => {
-    setText("");
+    setText("ここにテキストを貼りつけてください");
     setAllKanji([]);
     setFilterKanji([]);
   }
