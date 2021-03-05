@@ -98,7 +98,7 @@ export default function Filter({ allKanji, setFilterKanji, resetApp }) {
             <Table>
               <TableHeader>
                 <TableRow center={true}>
-                  <th>Select the Kanji you would like to study.</th>
+                  <th>Select the kanji you would like to study.</th>
                 </TableRow>
                 <TableRow center={true}>
                   <TableCol>
