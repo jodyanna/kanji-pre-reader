@@ -137,7 +137,7 @@ export default function Filter({ allKanji, setFilterKanji, resetApp }) {
             </Table>
           :
             <FlexCol>
-              <Text>No kanji detected.</Text>
+              <Text data-testid="filter-status-none">No kanji detected.</Text>
               <Button type="button"
                       value="Start Over"
                       onClick={handleStartOverClick}
